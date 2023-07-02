@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+
+<c:set var="question" value="${sessionScope.question}"/>
+<c:choose>
+	<c:when test="${empty question}">
+		<script>alert('계정 찾기용 질문이 없습니다. 관리자에게 문의해주세요.')</script>
+	</c:when>
+</c:choose>
+
+<body>
+<form action="findIdOrPw">
+	<table>
+		<tr>
+			<td>계정 찾기 질문</td>
+	</table>
+</form>
+</body>
+</html>

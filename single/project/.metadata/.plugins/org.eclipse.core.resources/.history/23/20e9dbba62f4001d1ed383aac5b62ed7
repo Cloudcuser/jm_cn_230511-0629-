@@ -1,0 +1,30 @@
+package com.cafeprojF.www;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.sql.DataSource;
+
+public class CafeBasicInfoDAO extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	private static CafeBasicInfoDAO  cbiDAO = new CafeBasicInfoDAO();
+	private String Connecion_pool_resourse_name="jdbc/nicedb";
+	private final String Table_name = "CafeBasicInfo";
+	private DataSource dataSource;
+	
+    public CafeBasicInfoDAO() {
+    	  try {
+          	Context context = new InitialContext();
+          	dataSource = (DataSource)context.lookup("java:comp/env/"
+          				+Connecion_pool_resourse_name);
+          }
+    	  catch(NamingException e) {
+          	System.out.println("카페 정보 DAO : 드라이버 로드 실패");
+          	e.printStackTrace();
+          }      
+    }
+
+}

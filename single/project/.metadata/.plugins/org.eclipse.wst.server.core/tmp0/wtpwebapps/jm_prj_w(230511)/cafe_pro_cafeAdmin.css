@@ -1,0 +1,380 @@
+body{
+    background-image: url("image_src/cafeAdmin/rabbit-g39c6fa03c_1280.png");
+    background-size: 400px 370px;
+    background-position: 1400px 600px;
+    background-repeat: no-repeat;
+}
+label:hover{
+    background-color: grey;
+    cursor:pointer;
+    color:blanchedalmond;
+    background-image: url("image_src/cafeAdmin/feet-g8989fb746_640.png");
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-position: 0px 0px;
+}
+label:active{
+    color:rgb(48, 214, 214);
+}
+table td:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+.top a:hover{
+    background-color: rgba(0,0,0,0.1);
+    font-size:1.1em;
+}
+.top #gnl{
+    position: absolute;
+    top:0;
+    margin-top: 10px;
+    right:50px;
+    display: block;
+    border-radius: 10px 10px;
+}
+.top #gnl ul{
+    overflow: hidden;
+    display: inline-block;
+    padding:2px 10px;    
+}
+.top #gnl ul li{
+    float: left;
+    list-style-type: none;
+    border-right:1px solid rgb(0, 0, 0);
+}
+.top #gnl ul li a{
+    padding: 8px 12px; 
+       
+}
+.top #gnl ul li a:hover{
+    color:blue;
+}
+
+header #admin_headerPos{
+    font-size: 2.7em;
+    position: absolute;
+    display: block;
+    background-image: url("image_src/cafeAdmin/birds-gc89ff3486_1280.png");
+    background-size: auto;
+    width:1780px;
+    top:50px;
+    padding:25px 0px;
+    padding-left: 120px;
+    border:2px solid black;
+    margin-top:20px;
+    color:rgb(151, 126, 24);
+
+}
+main{
+    position:absolute;
+    top:200px;
+    left:200px;
+    border:2px solid black;
+    padding:40px;
+    padding-top:20px;
+    /* background-image: url("image_src/cafeAdmin/bird-g2399da529_1280.png"); */
+    background-size: 200px 100px;
+    background-repeat: no-repeat;
+    background-position: 800px 10px;
+}   
+
+.admin_mainBtn{  
+    overflow: hidden;
+    border-bottom: none;
+}
+.admin_mainBtn label{
+    padding: 10px 20px;
+    border-top:2px solid black;
+    border-right:2px solid grey;
+    border-bottom:2px solid grey;
+    overflow: hidden;
+    display: inline-block;
+    border-left:2px solid black;
+}
+/* tableEdit menu */
+.admin_mainSettingMenu_tableEdit_menu{
+     display: none;
+}
+
+input[type="radio"]{ display: none; }
+
+main input[type="radio"]#tableEdit:checked  ~ .admin_mainSettingMenu_tableEdit_menu{
+    display: block;
+}
+
+#admin_mainSettingMenu_tableEdit_menuBtn{
+    overflow: hidden;
+    display: inline;
+    
+}
+#admin_mainSettingMenu_tableEdit_menuBtn label{
+    border-top: 2px solid black;
+    border-right:2px solid black;
+    display: inline-block;
+    padding: 10px 20px;
+    position: relative;    
+}
+#admin_mainSettingMenu_tableEdit_menuBtn label:nth-child(2){
+    border-left:2px solid black;
+}
+#admin_mainSettingMenu_tableEdit_menuBtn label:first-child{
+    padding: 10px 20px;
+    border-left:2px solid black;
+}
+section #normalTable_window{
+    display: none;
+}
+section #normalTable_window table{
+    width:1000px;
+    border:2px solid black;
+}
+section #normalTable_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#tableEdit_normalTable:checked ~ section #normalTable_window{ 
+    display: block;
+}
+section #memoTable_window{
+    display: none;
+}
+section #memoTable_window table{
+    width:1000px;
+    border:2px solid black;
+}
+section #memoTable_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#tableEdit_memoTable:checked ~ section #memoTable_window{ 
+    display: block;
+}
+
+/* admin_member_menu */
+.admin_mainSettingMenu_admin_member_menu{
+    display: none;
+}
+
+main input[type="radio"]#admin_member:checked  ~ .admin_mainSettingMenu_admin_member_menu{
+   display: block;
+}
+
+#admin_mainSettingMenu_admin_member_menuBtn{
+   overflow: hidden;
+   display: inline;   
+}
+#admin_mainSettingMenu_admin_member_menuBtn label{
+   border-top: 2px solid black;
+   border-right:2px solid black;
+   display: inline-block;
+   padding: 10px 20px;
+   position: relative;    
+}
+#admin_mainSettingMenu_admin_member_menuBtn label:nth-child(2){
+   border-left:2px solid black;
+}
+#admin_mainSettingMenu_admin_member_menuBtn label:first-child{
+   padding: 10px 20px;
+   border-left:2px solid black;
+}
+section #memberList_window{
+   display: none;
+}
+section #memberList_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #memberList_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#admin_member_memberList:checked ~ section #memberList_window{ 
+   display: block;
+}
+section #gradeConfig_window{
+   display: none;
+}
+section #gradeConfig_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #gradeConfig_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#admin_member_gradeConfig:checked ~ section #gradeConfig_window{ 
+   display: block;
+}
+/* admin_staff menu */
+.admin_mainSettingMenu_admin_staff_menu{
+    display: none;
+}
+
+main input[type="radio"]#admin_staff:checked  ~ .admin_mainSettingMenu_admin_staff_menu{
+   display: block;
+}
+
+#admin_mainSettingMenu_admin_staff_menuBtn{
+   overflow: hidden;
+   display: inline;   
+}
+#admin_mainSettingMenu_admin_staff_menuBtn label{
+   border-top: 2px solid black;
+   border-right:2px solid black;
+   display: inline-block;
+   padding: 10px 20px;
+   position: relative;    
+}
+#admin_mainSettingMenu_admin_staff_menuBtn label:nth-child(2)
+,#admin_mainSettingMenu_admin_staff_menuBtn label:nth-child(3){
+   border-left:2px solid black;
+}
+#admin_mainSettingMenu_admin_staff_menuBtn label:first-child{
+   padding: 10px 20px;
+   border-left:2px solid black;
+}
+section #staff_performance_window{
+   display: none;
+}
+section #staff_performance_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #staff_performance_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#admin_staff_performance:checked ~ section #staff_performance_window{ 
+   display: block;
+}
+section #staff_privConfig_window{
+   display: none;
+}
+section #staff_privConfig_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #staff_privConfig_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#admin_staff_privConfig:checked ~ section #staff_privConfig_window{ 
+   display: block;
+}
+section #staff_warningRecord_window{
+   display: none;
+}
+section #staff_warningRecord_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #staff_warningRecord_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#admin_staff_warningRecord:checked ~ section #staff_warningRecord_window{ 
+   display: block;
+}
+/* cafeLayout menu */
+.admin_mainSettingMenu_cafeLayout_menu{
+    display: none;
+}
+
+main input[type="radio"]#cafeLayout:checked  ~ .admin_mainSettingMenu_cafeLayout_menu{
+   display: block;
+}
+
+#admin_mainSettingMenu_cafeLayout_menuBtn{
+   overflow: hidden;
+   display: inline;   
+}
+#admin_mainSettingMenu_cafeLayout_menuBtn label{
+   border-top: 2px solid black;
+   border-right:2px solid black;
+   display: inline-block;
+   padding: 10px 20px;
+   position: relative;    
+}
+#admin_mainSettingMenu_cafeLayout_menuBtn label:nth-child(2){
+   border-left:2px solid black;
+}
+#admin_mainSettingMenu_cafeLayout_menuBtn label:first-child{
+   padding: 10px 20px;
+   border-left:2px solid black;
+}
+section #change_mainLayout_window{
+   display: none;
+}
+section #change_mainLayout_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #change_mainLayout_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#cafeLayout_change_mainLayout:checked ~ section #change_mainLayout_window{ 
+   display: block;
+}
+section #admin_templates_window{
+   display: none;
+}
+section #admin_templates_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #admin_templates_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#cafeLayout_admin_templates:checked ~ section #admin_templates_window{ 
+   display: block;
+}
+/* event_config_menu */
+.admin_mainSettingMenu_event_config_menu{
+    display: none;
+}
+
+main input[type="radio"]#event_config:checked  ~ .admin_mainSettingMenu_event_config_menu{
+   display: block;
+}
+
+#admin_mainSettingMenu_event_config_menuBtn{
+   overflow: hidden;
+   display: inline;   
+}
+#admin_mainSettingMenu_event_config_menuBtn label{
+   border-top: 2px solid black;
+   border-right:2px solid black;
+   display: inline-block;
+   padding: 10px 20px;
+   position: relative;    
+}
+#admin_mainSettingMenu_event_config_menuBtn label:nth-child(2){
+   border-left:2px solid black;
+}
+#admin_mainSettingMenu_event_config_menuBtn label:first-child{
+   padding: 10px 20px;
+   border-left:2px solid black;
+}
+section #eventCalender_window{
+   display: none;
+}
+section #eventCalender_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #eventCalender_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#event_config_eventCalender:checked ~ section #eventCalender_window{ 
+   display: block;
+}
+section #eventList_window{
+   display: none;
+}
+section #eventList_window table{
+   width:1000px;
+   border:2px solid black;
+}
+section #eventList_window table tr:nth-of-type(2n){
+    background-color: rgb(240, 234, 234);
+}
+section input[type="radio"]#event_config_eventList:checked ~ section #eventList_window{ 
+   display: block;
+}

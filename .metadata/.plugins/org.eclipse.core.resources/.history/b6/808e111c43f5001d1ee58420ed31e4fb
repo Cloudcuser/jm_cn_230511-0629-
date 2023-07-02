@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>passwordcheck</title>
+</head>
+<body>
+<form action="pwchk" method="post" name="pwchkForm">
+	<table>
+		<caption>비밀번호 확인</caption>
+		<tr>
+			<td>비밀번호</td><td><input type="password" name="pw"/>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="확인" />
+				&nbsp;<a href="cafe_proj_cafeMain.jsp"></a><input type="button" value="돌아가기" />
+			</td>
+			
+		</tr>	
+			
+	</table>
+</form>
+</body>
+</html>

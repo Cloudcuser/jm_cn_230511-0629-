@@ -1,0 +1,15 @@
+INDEX VERSION 1.131
+C:\JavaStudy\single_project(cn_230511) (w_230517)\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3113489044.index
+\jm_prj_w(230511)\src\main\java
+C:\JavaStudy\temp\jm_cn_230511\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1877388370.index
+\jm_prj_w(230511)\src\main\java
+C:\JavaStudy\single_project(cn_230511) (w_230517)\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1877388370.index
+\jm_prj_w(230511)\src\main\java
+C:\JavaStudy\temp\jm_cn_230511\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\657705686.index
+\AjaxIDCheck\src\main\java
+C:\JavaStudy\temp\jm_cn_230511\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3401681360.index
+\AjaxMemberInfoJQuery\src\main\java
+C:\JavaStudy\temp\jm_cn_230511\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\932455721.index
+\AjaxMemberInfo\src\main\java
+C:\JavaStudy\temp\jm_cn_230511\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\989063969.index
+\AJAX1\src

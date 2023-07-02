@@ -1,0 +1,480 @@
+<%@page import="com.cafeprojF.www.CafememberInfoDAO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%		
+	String mCnt = (String)session.getAttribute("mCnt");
+	String adminName = (String)session.getAttribute("adminName");
+%>
+
+<c:set var="aId" value="${sessionScope.id }"/>
+<c:set var="aNickname" value="${sessionScope.nickname }"/>
+<c:set var="chName" value="${sessionScope.cNickname }" />
+<c:set var="isStaff" value="${priv }" />
+<c:choose>
+	<c:when test="${empty isStaff}">
+		<c:set var="isStaff" value="0"/>
+	</c:when>
+	<c:when test="${isStaff eq 1 }">
+		<c:set var="isStaff" value="${no}"/>
+	</c:when>
+	<c:when test="${isStaff eq 2 }">
+		<c:set var="isStaff" value="staff"/>
+	</c:when>	
+</c:choose>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe_proj_cafeMain</title>
+    <link rel="stylesheet" type=text/css href="./css/cafe_pro_cafeMain.css?after">
+	<script src="./js/jquery-3.6.4.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+</head>
+<body>
+<script>
+	
+</script>
+    <div class="top">
+        <div id="music_player">
+            <audio src="audio_src/Kalimba.mp3" controls></audio>
+            <!-- 오디오 플레이어 -->
+        </div>
+            <div id="gnl">
+                <!-- 상단 통합 메뉴 공간 -->
+                <ul>
+                    <li id="goToCafeHome"><a href="startMain.jsp">카페 홈</a> </li>
+                    <li id="goToMainSite"><a href="#">메인 포털 사이트</a> </li>               
+                </ul>
+            </div>
+    </div>
+    <header>
+        <!-- 맨 윗부분 -->
+       
+        <div id="title">
+            <!-- 로고 타이틀-->
+            <!-- 누르면 메인 홈으로 이동 -->
+            <div id="title_text"> All Animals World</div>
+            <a href="startMain.jsp" id="logo" title="home"></a>
+            
+        </div>
+    </header>
+    <nav>
+        <!-- 왼쪽 부분 메뉴 공간 -->
+        <div class="cafe_mainMenu">
+            <!--카페 프로필 & 카페 관리 & 회원가입 & 글쓰기  -->
+            <div class="cafe_profile">                
+                <!-- 카페 프로필 공간 -->
+                <div id="cafeName">All Animals Worlds</div> 
+                <!-- 카페 등급 이미지 -->
+                <!-- 누르면 현재 등급 전체 카페 등급 화면 표시 -->
+                <div id="curCafeGrade">카페 등급</div>
+                <!-- 회원 등급 이미지 -->
+                <!-- 누르면 현재 등급 전체 회원 등급 화면 표시 -->
+                <div id="managersName">매니저 : ${adminName}</div>
+                <!-- 왼쪽에 사람 아이콘 이미지 -->
+                <div id="countMembers">회원 수 : ${mCnt}명</div>
+                <!-- 설정 아이콘 이미지 -->
+<c:choose>
+	<c:when test="${isStaff eq 'staff' }">
+		<a href="cafe_pro_cafeAdmin.html" id="admin_Cafe">카페 관리 </a> 
+	</c:when>	
+	<c:otherwise>
+		<a href="cafe_pro_cafeAdmin.html" id="admin_Cafe"> </a> 
+	</c:otherwise>
+</c:choose>
+             
+                <!-- 카페 대표 이미지 설정 기능 -->
+                <!-- 카페 도메인 변경 기능 -->
+                <!-- 카페 활동, 회원별, 게시판별 활동 추이 화면 -->
+                <!-- 게시판 추가 삭제 수정 등 편집 기능 -->
+                <!-- 회원 등급 조정 기능 / 스탭 권한 편집 기능  -->
+                <!-- 카페 디자인 편집 기능(템플릿 저장 기능 포함) -->
+                <!-- 카페 레이아웃 편집-->
+               <!--  <a href="cafe_pro_cafeChatting.html" id="CafeChat">카페 채팅 </a>
+                채팅방 설정(개설 & 편집 & 인원 수 설정)
+                <a href="cafe_pro_InviteToCafe.html" id="InviteToCafe">카페 초대</a> -->
+                <div id="profile_menubar">
+                	
+                </div>
+            </div>
+                <ul class="memberMenu">
+<c:choose>
+	<c:when test="${empty aId}">
+					<li>
+                    	<a href="cafe_pro_logIn.html" id="logIn">로그인</a>
+                    </li>                                    	
+                    <li>
+                        <a href="cafe_pro_joinToCafe.html" id=joinToCafe>회원 가입</a>
+                    </li>
+	</c:when>
+	<c:when test="${not empty chName}" >
+	<li id="markNickname" style="text-align:center">
+						${chName}님 환영합니다.
+					</li><br>					
+					<li>
+						<a href="cafe_logOut" id="logOut">로그아웃</a>
+					</li>
+					<li>
+						<a href="cafe_pro_PWPass_info.jsp?mode=editInfo" id="infoEdit">회원 정보 수정</a>
+					</li>
+					
+					
+	</c:when>
+	<c:when test="${not empty aId || empty chName }">
+					<li id="markNickname" style="text-align:center">
+						${aNickname}님 환영합니다.
+					</li><br>					
+					<li>
+						<a href="cafe_logOut" id="logOut">로그아웃</a>
+					</li>
+					<li>
+						<a href="cafe_pro_PWPass_info.jsp?mode=editInfo" id="infoEdit">회원 정보 수정</a>
+					</li>
+					<br>					
+					<li>
+						<a href="myInfoOK" id="myInfo">내 정보 보기</a>
+					</li>
+	</c:when>
+	
+</c:choose>      
+                </ul>                                
+                <!-- 펜 이미지 -->
+<c:choose>
+	<c:when test="${not empty aId}">
+		<div id="newPostBox"><a href="cafe_pro_newPosting.jsp" id="newPosting">카페 글 쓰기</a> </div>
+	</c:when>
+	<c:when test="${empty aId}">
+		<!-- <div><a href="cafe_pro_newPosting.jsp" id="newPosting"></a> </div> -->
+	</c:when>
+	
+</c:choose>
+               <!--  <div><a href="cafe_pro_newPosting.jsp" id="newPosting">카페 글쓰기</a> </div> -->
+                <!-- 게시글 레이아웃 편집 기능 필요(템플릿 저장 기능 포함) -->                            
+            </div>       
+        <div class="table_menu">
+            <!-- 게시판 메뉴 공간 -->           
+            <!-- 게시판 그룹 접기 열기 기능 필요 -->
+            <!-- 구분 선 넣기 필요 -->
+            <!-- 상위 게시판, 하위 게시판, 게시판 순서 편집 기능 -->
+            <div id="showAllPost"><a href="showList.do">전체 글 보기</a></div>
+            <div id='table_menubar'></div>
+            <ul id="opearateMenu"> <c:out value="운영 메뉴"/>
+                <li id="notice_boardSet" value="공지" class="tableMenuBtn"> 공지 게시판 <br></li>
+                <li id="report_boardSet" value="신고" class="tableMenuBtn"> 신고 게시판 <br></li>                    
+                <li id="warning_boardSet" value="경고" class="tableMenuBtn">경고 게시판 <br></li>
+            </ul>
+            <ul id="active_boardMenu"> <c:out value="게시판 메뉴"/>
+                <li id="normal_boardSet" value="일반" class="tableMenuBtn" >일반 게시판<br></li>                
+                <li id="memo_boardSet" value="메모"class="tableMenuBtn"> 메모 게시판<br></li>
+                    <!-- 글 양식 편집 기능 -->
+            </ul>               
+                <!-- 게시판 추가 기능은 자바스크립트 함수로 구현하기 -->            
+        </div>        
+      <!--   <aside>
+            <div style="text-align: center;">(wiget place)</div> 
+            추가 메뉴 혹은 위젯 공간(레이아웃 편집 기능으로 변경 가능)
+            시계 위젯
+            방문자 집계 위젯
+            최근 게시글 목록
+            visitor / calender / clock / etc..
+            <form action="searchData">
+            	<div class="search">
+                	검색 <input type="text" placeholder="검색할 내용을 입력하세요">
+            		<input type="submit" value="검색" id="searchBtn" />
+            	</div>
+            </form>
+        </aside> -->
+        
+        <div>
+        	 <c:choose>
+        		<c:when test="${not empty aId}">
+		            <button id="QuitToCafe">카페 탈퇴</button>		            
+        		</c:when>
+				<c:when test="${empty aId }">
+					<button id="QuitToCafe" style="display:none">카페 탈퇴</button>
+				</c:when>
+        	 </c:choose>
+        	 		
+        </div>
+    </nav>
+    <section class="main_sect">
+        <!-- 메인 컨텐츠 공간 -->
+        <!-- 홈 레이아웃 편집 기능 필요 -->
+        <div id="table_notice"> <ul id="table_notice_ul"> 
+        							<li id="table_notice_head"> <b><c:out value="[공지 게시판]" /></b></li>	        					     
+		        					     	<c:if test="${not empty tableList }">
+		        					     						     <!-- and (dto.writer ne 'del') -->
+		        					     		<c:set var="count" value="${0 }"></c:set>
+		        					   			<c:set var="loopSwitch" value="false"/>
+		        					   				<c:forEach var="dto" items="${tableList }" varStatus="status">
+		        					   					<c:if test="${not loopSwitch }">
+							        						<c:if test="${count==1 }">
+							        							<c:set var="loopSwitch" value="true" />
+							        						</c:if>
+							        						<c:choose>
+																<c:when test="${not empty boxList }">											
+																		<c:set var="comCount" value="0"/>										
+																		<c:forEach var="boxdto" items="${boxList }">
+																			<c:if test="${dto.contentNo eq boxdto.tableNo }">
+																				<!-- <script>function b(){console.log("contentNo:"+${dto.contentNo}+"tableNo:"+${boxdto.tableNo})} b() </script> -->
+																				<c:set var="comCount" value="${comCount+1}"/>
+																			</c:if>																							
+																		</c:forEach>
+																		<!-- <script>function c(){console.log("======comCount:"+${comCount}+"=======")} c() </script> -->
+																</c:when>
+																	<c:otherwise>
+																		<c:set var="comCount" value="0"/>
+																	</c:otherwise>
+															</c:choose>
+								        						<c:choose>																					        						
+									        						<c:when test="${(dto.subTableTag eq '공지') and (dto.writer ne 'del') and ( (dto.isNoticeThisOrAll eq 1) or (dto.isNoticeThisOrAll eq 3)) }">								        							
+									        							<c:set var="count" value="${count+1}"/>									        							
+									        							 	<li id="tableNotice">
+										        							 	<c:choose>
+																					<c:when test="${dto.subNum gt 0 }">
+																						<c:forEach begin="1" end="${dto.subNum}">
+																							<img src="./image_src/showAllPost/app-g05cc8e105_640.png" alt="#" id="subImg" />
+																						</c:forEach>
+																							<c:if test="${dto.indentNum gt 0 }">
+																								<c:forEach begin="1" end="${dto.indentNum}">
+																									<img src="./image_src/showAllPost/arrow-right-ga680cb928_640.png" alt="#" id="subImg" />
+																								</c:forEach>
+																							</c:if>
+																					</c:when>
+																				</c:choose>	
+									        							 		<a href="view.do?no=${dto.contentNo }"> [${dto.extraTag }] ${dto.writer } || ${ dto.title} (${comCount }) <br> 조회수 ${dto.readCnt}</a>
+									        							 	</li>
+									        						</c:when> 
+									        					</c:choose>
+								        					</c:if>
+		        					   				</c:forEach>
+		        					   		</c:if>		
+		        					   		<c:if test="${not empty tableList }"> 
+		        				   					<c:set var="count" value="${0 }"></c:set>
+		        				   					<c:set var="loopSwitch" value="false"/>      					     	  	
+							        					<c:forEach var="dto" items="${tableList }" varStatus="status">
+							        						<c:if test="${not loopSwitch }">
+							        						<c:if test="${count==1 }">
+							        							<c:set var="loopSwitch" value="true" />
+							        						</c:if>
+							        						<c:choose>
+																<c:when test="${not empty boxList }">											
+																		<c:set var="comCount" value="0"/>										
+																		<c:forEach var="boxdto" items="${boxList }">
+																			<c:if test="${dto.contentNo eq boxdto.tableNo }">
+																				<c:set var="comCount" value="${comCount+1}"/>
+																			</c:if>																							
+																		</c:forEach>
+																		
+																</c:when>
+																	<c:otherwise>
+																		<c:set var="comCount" value="0"/>
+																	</c:otherwise>
+															</c:choose>
+								        						<c:choose>																					        						
+									        						<c:when test="${(dto.subTableTag eq '공지') and (dto.writer ne 'del') }">								        							
+									        							<c:set var="count" value="${count+1}"/>
+									        							<c:choose>
+																			<c:when test="${dto.subNum gt 0 }">
+																				<c:forEach begin="1" end="${dto.subNum}">
+																					<img src="./image_src/showAllPost/app-g05cc8e105_640.png" alt="#" id="subImg" />
+																				</c:forEach>
+																					<c:if test="${dto.indentNum gt 0 }">
+																						<c:forEach begin="1" end="${dto.indentNum}">
+																							<img src="./image_src/showAllPost/arrow-right-ga680cb928_640.png" alt="#" id="subImg" />
+																						</c:forEach>
+																					</c:if>
+																			</c:when>
+																		</c:choose>
+									        							 	<li>
+																				<c:choose>
+																					<c:when test="${dto.subNum gt 0 }">
+																						<c:forEach begin="1" end="${dto.subNum}">-</c:forEach>
+																							<c:if test="${dto.indentNum gt 0 }">
+																								<c:forEach begin="1" end="${dto.indentNum}">&</c:forEach>
+																							</c:if>
+																					</c:when>
+																				</c:choose>								        							
+									        							 		<a href="view.do?no=${dto.contentNo }">  [${dto.extraTag }] ${ dto.title} (${comCount }) <br> 조회수 ${dto.readCnt}</a>
+									        							 	</li>
+									        						</c:when> 
+									        					</c:choose>
+								        					</c:if>
+								        				</c:forEach>
+		        					     	</c:if>					
+                                </ul> 
+            </div> 
+        <div id="table_basic"> <ul id="table_basic_ul"> 
+        							<li id="table_basic_head"><b> <c:out value="[일반 게시판]" /></b></li>
+                                        <c:if test="${not empty tableList }">
+		        		
+		        					     						     <!-- and (dto.writer ne 'del') -->
+		        					     		<c:set var="count" value="${0 }"></c:set>
+		        					   			<c:set var="loopSwitch" value="false"/>			        					     	  	
+							        					<c:forEach var="dto" items="${tableList }" varStatus="status">
+							        						<c:if test="${not loopSwitch }">
+								        						<c:if test="${count==5 }">
+								        							<c:set var="loopSwitch" value="true" />
+								        						</c:if>
+								        						<!-- <script>function c(){console.log("======contentNo:"+${dto.contentNo}+"=======")} c() </script> -->
+								        						<c:choose>
+																	<c:when test="${not empty boxList }">											
+																			<c:set var="comCount" value="0"/>										
+																			<c:forEach var="boxdto" items="${boxList}">
+																			<!-- <script>function c(){console.log("======tableNo:"+${boxdto.tableNo}+"=======")} c() </script> -->
+																				<c:if test="${dto.contentNo eq boxdto.tableNo }">
+																					
+																					<!-- <script>function b(){console.log("contentNo:"+${dto.contentNo}+"tableNo:"+${boxdto.tableNo})} b() </script> -->
+																					<c:set var="comCount" value="${comCount+1}"/>
+																				</c:if>																							
+																			</c:forEach>
+																			<!-- <script>function c(){console.log("======comCount:"+${comCount}+"=======")} c() </script> -->
+																	</c:when>
+																		<c:otherwise>
+																			<c:set var="comCount" value="0"/>
+																		</c:otherwise>
+																</c:choose>
+								        						<c:choose>																					        						
+									        						<c:when test="${(dto.subTableTag eq '일반') }">
+									        							<c:set var="count" value="${count+1}"/>
+									        							 	<li>
+											        							<c:choose>
+																					<c:when test="${dto.subNum gt 0 }">
+																						<c:forEach begin="1" end="${dto.subNum}">
+																									<img src="./image_src/showAllPost/app-g05cc8e105_640.png" alt="#" id="subImg" />
+																						</c:forEach>
+																							<c:if test="${dto.indentNum gt 0 }">
+																								<c:forEach begin="1" end="${dto.indentNum}">
+																									<img src="./image_src/showAllPost/arrow-right-ga680cb928_640.png" alt="#" id="subImg" />
+																								</c:forEach>
+																							</c:if>
+																					</c:when>
+																				</c:choose>									        							
+										        							 	<a href="view.do?no=${dto.contentNo }">  [${dto.extraTag }] ${ dto.title} (${comCount }) <br> 조회수 ${dto.readCnt}</a>
+									        							 	</li>
+									        						</c:when> 
+									        					</c:choose>
+								        					</c:if>
+								        				</c:forEach>
+		        					     	</c:if>			            
+                                   </ul> 
+            </div>
+       <%--  <div id="table_video">   <ul> <c:out value="영상 게시판"></c:out>
+                                        <li> title 1</li>
+                                        <li> title 2</li>
+                                        <li> title 3</li>
+                                 </ul> 
+            </div>
+        <div id="table_tempCategory1"> <ul><c:out value="인기 글"></c:out>
+                                            <li> title 1</li>
+                                            <li> title 2</li>
+                                            <li> title 3</li>   
+                                       </ul> 
+            </div>       --%>  
+    </section>
+    
+    <div style="clear:left"></div>
+    
+    <!-- <footer> -->
+        <!-- 카피라이트. 카페 주소 등. -->
+        <!-- copyrights jm -->
+    <!-- </footer> -->
+
+    <script src="./js/cafe_pro_cafeMain.js" charset="utf-8"></script>
+    <script>
+
+    $("#QuitToCafe").on("click", quitToCafe_member);
+
+    function eventRegTableMenuBtn(){
+    	let btns = document.querySelectorAll(".tableMenuBtn"); 
+    	for(let i=0; i<btns.length; i++){
+    		btns[i].addEventListener("click",function(){
+    		    	let kind = btns[i].getAttributeNode("value").value;
+    				moveKindTable(kind);
+    		});
+    		
+    	}    	
+	}
+	window.onload=eventRegTableMenuBtn;
+    
+    	function moveKindTable(kind){
+    		$.ajax({
+    			url:"showList.do",
+    			type:"get",
+    			async:"false",
+    			data:{
+    				subTableKind:kind,
+    			},
+    			dataType:"text",
+    			success:moveKindTableSendData,
+    			error:function(){
+    				alert("데이터 보내기 실패");
+    			}
+    		})
+    	}
+    	function moveKindTableSendData(){
+    		alert("테이블 데이터 보내기 성공");
+    		location.href="showKindList.jsp";
+    	}    	
+    	function quitToCafe_member(){
+    	  	let input=confirm("정말로 탈퇴하시겠습니까?");
+    	  	if(input){
+    			  let pwInput = prompt("사용하시던 아이디[${id}]는 재이용이 불가능합니다. "
+    					  	+"비밀번호를 입력하세요.");
+    			  if(pwInput){
+    				  alert(pwInput);
+    				  quitToCheckPassword(pwInput);
+    			  }
+    			  else{
+    				  alert("탈퇴 취소");
+    			  }
+    		  }
+    	  	else{
+    	  		
+    	  	}
+    	}
+    	function quitToCheckPassword(pwInput){
+    		$.ajax({
+    			url:"checkPWQuit.do",
+    			type:"post",
+    			async:true,
+    			data:{    				
+    				pwInput:pwInput,
+    			},
+    			dataType:"text",
+    			success: quitToCheckPasswordSendData(pwInput),
+    			error: function(){
+    				alert("확인 데이터 전송 실패");
+    			}
+    			
+    		})
+    	}
+    	function quitToCheckPasswordSendData(pwInput){
+    		console.log("비밀번호 체크 확인");    		
+    		
+    		if(${ispwOk == "yes"}){
+    			alert("탈퇴되었습니다.");
+    			location.href="startMain.jsp";
+    		}    		
+    		else if(${ispwOK == "no"}){
+    			alert('일치하는 정보가 없습니다.');
+    		}
+    		else{
+    			alert('확인 과정 오류.');
+    		}
+    		
+	    		
+    		<!-- location.href="startMain.jsp"; -->
+    	}
+    	
+    	
+    </script>
+</body>
+</html>

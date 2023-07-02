@@ -1,0 +1,426 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%		
+	String mCnt = (String)session.getAttribute("mCnt");
+	String adminName = (String)session.getAttribute("adminName");
+	
+	int notice = (Integer)session.getAttribute("isNoticeThisOrAll");
+	System.out.println("notice :"+notice);
+	//말머리/, 게시판/, 공지
+%>
+
+
+<c:set var="aId" value="${sessionScope.id }"/>
+<c:set var="aNickname" value="${sessionScope.nickname }"/>
+<c:set var="chName" value="${sessionScope.cNickname }" />
+<c:set var="isStaff" value="${priv }" />
+
+<c:choose>
+	<c:when test="${empty isStaff}">
+		<c:set var="isStaff" value="0"/>
+	</c:when>
+	<c:when test="${isStaff eq 1 }">
+		<c:set var="isStaff" value="${no}"/>
+	</c:when>
+	<c:when test="${isStaff eq 2 }">
+		<c:set var="isStaff" value="staff"/>
+	</c:when>	
+</c:choose>
+
+
+
+<c:set var="writerName" value="${sessionScope.nickname }"/>	<!-- 작성자 정보 입력용 -->
+<c:set var="priv" value="${sessionScope.priv}" /> <!--게시글 작성 권한 확인용  -->
+<c:set var="tableTag" value="${sessionScope.tableTag }" /><!-- 게시판 선택 옵션 불러오기 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe_pro_modifyPost</title>
+    <link rel="stylesheet" type="text/css" href="./css/modifyPost.css">
+
+    <script src="./js/modifyPost.js"></script>
+	<script src="./js/jquery-3.6.4.js"></script>
+	<link rel="stylesheet" href="./css/modifyPost.css" />
+	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+</head>
+<body>
+<c:choose>
+	<c:when test="${empty writerName }">
+		<script>
+			logCheck()				
+		</script>
+	</c:when>
+</c:choose>
+ <div class="top">
+        <div id="music_player">
+            <audio src="audio_src/Kalimba.mp3" controls></audio>
+            <!-- 오디오 플레이어 -->
+           </div>
+            <div id="gnl">
+                <!-- 상단 통합 메뉴 공간 -->
+                <ul>
+                    <li id="goToCafeHome"><a href="cafe_proj_cafeMain.jsp">카페 홈</a> </li>
+                    <li id="goToMainSite"><a href="#">메인 포털 사이트</a> </li>               
+                </ul>
+            </div>
+    </div>
+    <header>
+        <!-- 맨 윗부분 -->
+       
+        <div id="title">
+            <!-- 로고 타이틀-->
+            <!-- 누르면 메인 홈으로 이동 -->
+            <div id="title_text"> All Animals World</div>
+            <a href="cafe_proj_cafeMain.jsp" id="logo" title="home"></a>
+            
+        </div>
+    </header>
+    <nav>
+        <!-- 왼쪽 부분 메뉴 공간 -->
+        <div class="cafe_mainMenu">
+            <!--카페 프로필 & 카페 관리 & 회원가입 & 글쓰기  -->
+            <div class="cafe_profile">                
+                <!-- 카페 프로필 공간 -->
+                <div id="cafeName">All Animals Worlds</div> 
+                <!-- 카페 등급 이미지 -->
+                <!-- 누르면 현재 등급 전체 카페 등급 화면 표시 -->
+                <div id="curCafeGrade">카페 등급</div>
+                <!-- 회원 등급 이미지 -->
+                <!-- 누르면 현재 등급 전체 회원 등급 화면 표시 -->
+                <div id="managersName">매니저 : ${adminName}</div> 
+                <!-- 왼쪽에 사람 아이콘 이미지 -->
+                <div id="countMembers">회원 수 : ${mCnt}명</div>
+                <!-- 설정 아이콘 이미지 -->
+<c:choose>
+	<c:when test="${isStaff eq 'staff' }">
+		<a href="cafe_pro_cafeAdmin.html" id="admin_Cafe">카페 관리 </a> 
+	</c:when>	
+	<c:otherwise>
+		<a href="cafe_pro_cafeAdmin.html" id="admin_Cafe"> </a> 
+	</c:otherwise>
+</c:choose> 
+                <!-- 카페 대표 이미지 설정 기능 -->
+                <!-- 카페 도메인 변경 기능 -->
+                <!-- 카페 활동, 회원별, 게시판별 활동 추이 화면 -->
+                <!-- 게시판 추가 삭제 수정 등 편집 기능 -->
+                <!-- 회원 등급 조정 기능 / 스탭 권한 편집 기능  -->
+                <!-- 카페 디자인 편집 기능(템플릿 저장 기능 포함) -->
+                <!-- 카페 레이아웃 편집-->
+                <!-- <a href="cafe_pro_cafeChatting.html" id="CafeChat">카페 채팅 </a>
+                채팅방 설정(개설 & 편집 & 인원 수 설정)
+                <a href="cafe_pro_InviteToCafe.html" id="InviteToCafe">카페 초대</a>  -->
+            	<div id="profile_menubar">
+            </div>
+                <ul class="memberMenu">
+<c:choose>
+	<c:when test="${empty aId}">
+					<li>
+                    	<a href="cafe_pro_logIn.html" id="logIn">로그인</a>                    	
+                    	
+                    </li>                                    	
+                    <li>
+                        <a href="cafe_pro_joinToCafe.html" id=joinToCafe>회원 가입</a>
+                    </li>
+	</c:when>
+ 	<c:when test="${not empty chName}" > 		
+					<li id="markNickname">
+						${chName}님 환영합니다.
+					</li><br>			
+					<li>
+						<a href="cafe_logOut" id="logOut">로그아웃 </a>						
+					</li>
+					<li>
+						<a href="cafe_pro_PWPass_info.jsp?mode=editInfo" id="infoEdit">회원 정보 수정</a>
+					</li>				
+	</c:when>
+	<c:when test="${not empty aId || empty chName }">					
+					<li id="markNickname" >								
+						${aNickname}님 환영합니다.
+					</li><br>	
+					<li>
+						<a href="cafe_logOut" id="logOut">로그아웃 </a>
+					</li>
+					<li>
+						<a href="cafe_pro_PWPass_info.jsp?mode=editInfo" id="infoEdit">회원 정보 수정</a>
+					</li>
+					<br>					
+					<li>
+						<a href="myInfoOK" id="myInfo">내 정보 보기</a>
+					</li>
+	</c:when>      
+ </c:choose>                
+                
+                
+                </ul>             
+                <!-- 펜 이미지 -->
+         <!--        <div><a href="cafe_pro_newPosting.jsp" id="newPosting">카페 글쓰기</a> </div> -->
+                <!-- 게시글 레이아웃 편집 기능 필요(템플릿 저장 기능 포함) -->           
+            </div>       
+        <div class="table_menu">
+            <!-- 게시판 메뉴 공간 -->           
+            <!-- 게시판 그룹 접기 열기 기능 필요 -->
+            <!-- 구분 선 넣기 필요 -->
+            <!-- 상위 게시판, 하위 게시판, 게시판 순서 편집 기능 -->
+            <div id="showAllPost"><a href="showList.do">전체 글 보기</a>   </div>
+            <div id='table_menubar'></div>
+            <ul id="opearateMenu"> 
+				<li id="opearateMenu_head"><c:out value="운영 메뉴" /><br></li>
+                <li id="notice_boardSet" value="공지" class="tableMenuBtn"><img src="./image_src/showAllPost/black-circle-g15db91f27_640.png" alt="#" id="listImg" />공지 게시판<br></li>
+                <li id="report_boardSet" value="신고" class="tableMenuBtn"><img src="./image_src/showAllPost/black-circle-g15db91f27_640.png" alt="#" id="listImg" />신고 게시판<br></li>                    
+                <li id="warning_boardSet" value="경고" class="tableMenuBtn"><img src="./image_src/showAllPost/black-circle-g15db91f27_640.png" alt="#" id="listImg" />경고 게시판 <br></li>
+            </ul>
+            <ul id="active_boardMenu"> 
+				<li id="active_boardMenu_head"><c:out value="게시판 메뉴"/><br></li>      
+                <li id="normal_boardSet" value="일반" class="tableMenuBtn"><img src="./image_src/showAllPost/black-circle-g15db91f27_640.png" alt="#" id="listImg" />일반 게시판 <br></li>                
+                <li id="memo_boardSet" value="메모" class="tableMenuBtn"><img src="./image_src/showAllPost/black-circle-g15db91f27_640.png" alt="#" id="listImg" />메모 게시판 <br></li>
+                    <!-- 글 양식 편집 기능 -->
+            </ul>                
+                <!-- 게시판 추가 기능은 자바스크립트 함수로 구현하기 -->            
+        </div>        
+      <!--   <aside>
+            <div style="text-align: center;">(wiget place)</div> 
+            추가 메뉴 혹은 위젯 공간(레이아웃 편집 기능으로 변경 가능)
+            시계 위젯
+            방문자 집계 위젯
+            최근 게시글 목록
+            visitor / calender / clock / etc..
+        </aside> -->
+        <div>
+			<c:choose>
+        		<c:when test="${not empty aId}">
+		            <button id="QuitToCafe">카페 탈퇴</button>		            
+        		</c:when>
+				<c:when test="${empty aId }">
+					<button id="QuitToCafe" style="display:none">카페 탈퇴</button>
+				</c:when>
+        	 </c:choose>
+        </div>
+    </nav>
+
+    <section class="newPosting_place">
+        <section class=newPosting_tablePlace>
+        <form action="modifyOK.do" method="post" name="postChkForm">
+            <table id="newPosting_table">
+                <caption>수 정 하 기</caption>
+                <tr>                   
+                    <td class="saveOrPost">
+<!--                         <button>양식 불러오기</button>
+                        <button>양식 저장하기</button> -->
+                        <a href="showList.do" ><input type="button" value="목록" id="goList" /></a>
+						<a href="startMain.jsp" ><input type="button" value="메인으로" id="goMain" /> </a>
+                        <input type="submit" value="등록" id="posting">
+                      <!--   <input type="button" value="임시 저장" id="tempSaving">   -->                    
+                    </td>
+                </tr>
+                <tr>
+                    <td id="selectTagOption">                        
+                	<c:choose>
+                		<c:when test="${not empty extraTag }">
+                			<input type="checkbox" value="말머리" id="tagOption" checked>
+	                        <label for="tagOption">말머리</label>			              			                                 
+                		</c:when>
+                		<c:otherwise>
+                        	<input type="checkbox" value="말머리" id="tagOption" >
+                			<label for="tagOption">말머리</label>
+                		</c:otherwise>
+                	</c:choose> 
+                        <select id="tagPlusBtn" name="extraTag">
+                        	<c:if test="${priv eq 2 }">
+	                        	<option value="공지" id="extraTagValue">공지</option>
+                        	</c:if>
+                            <option value="일반" id="extraTagValue">일반</option>
+                            <option value="영상" id="extraTagValue">영상</option>
+                            <option value="투표" id="extraTagValue">투표</option>
+                            <option value="이벤트" id="extraTagValue">이벤트</option>
+                        </select>
+                        <c:choose>
+                        	<c:when test="${not empty extraTag }">
+                        		<script>
+                        			let var1 = "${extraTag}";
+                        			findTagOption(var1);
+                        		</script>
+                        	</c:when>
+                        </c:choose>                      
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        게시판 선택
+                        <select id="subTableTag" name="subTableTag" required >
+                        		<optgroup label="게시판 메뉴">
+		                        	<c:choose>					
+										<c:when test="${ priv eq 2 }">
+											<option value="공지" id="subTableTagValue">공지 게시판</option>
+										</c:when>
+									</c:choose>
+								
+		                            <option value="신고" id="subTableTagValue">신고 게시판</option>
+		                            <option value="경고" id="subTableTagValue">경고 게시판</option>
+		                            <option value="일반" id="subTableTagValue">일반 게시판</option>
+		                            <option value="메모" id="subTableTagValue">메모 게시판</option>
+		                        </optgroup>
+	                    </select>
+	                    <c:choose>
+	                    	<c:when test="${not empty subTableTag}">
+	                    		<script>
+	                    			let var2 = "${subTableTag}";
+	                    			findTableOption(var2);
+		                    	</script>
+	                    	</c:when>	                    	
+	                    </c:choose>		                   
+	                    <c:choose> 		
+									 <c:when test="${priv eq 2 and not empty isNoticeThisOrAll and isNoticeThisOrAll eq 1}">
+										<input type="checkBox" value="thisNoticeOn" id="isTableNotice" name="notice" checked>
+			                        	<label for="isTableNotice">게시판 공지</label>
+			                        	<input type="checkBox" value="AllNoticeOn" id="isAllNotice" name="notice">
+										<label for="isAllNotice">전체 공지</label>
+									</c:when>
+									 <c:when test="${priv eq 2 and not empty isNoticeThisOrAll and isNoticeThisOrAll eq 2}">
+										<input type="checkBox" value="thisNoticeOn" id="isTableNotice" name="notice">
+			                        	<label for="isTableNotice">게시판 공지</label>
+										<input type="checkBox" value="AllNoticeOn" id="isAllNotice" name="notice" checked>
+										<label for="isAllNotice">전체 공지</label>
+									</c:when>									
+									<c:when test="${priv eq 2 and not empty isNoticeThisOrAll and isNoticeThisOrAll eq 3  }">
+										<input type="checkBox" value="thisNoticeOn" id="isTableNotice" name="notice" checked>
+			                        	<label for="isTableNotice">게시판 공지</label>
+										<input type="checkBox" value="AllNoticeOn" id="isAllNotice" name="notice" checked>
+										<label for="isAllNotice">전체 공지</label>
+									</c:when>
+																
+							</c:choose> 
+						<input type="checkBox" value="commentOn" id="isComment" name="comment">
+						<label for="isComment">댓글 허용</label>
+						<input type="checkBox" value="hitOn" id="isHit" name="hit">
+						<label for="isHit">공감 허용</label>
+						
+                    </td>
+                </tr>
+                <tr>
+                    <td id="inputTitlePlace">
+                        제목 <input type="text" id="postTitle" value="${title }" name="title">
+                    </td>
+                </tr>
+                
+               
+                <tr>
+                    <td>
+                    <textarea name="texts" 
+                        id="summernote" cols="100" rows="30" 
+                        required="required" autofocus> ${texts}                     
+                    </textarea>
+                    </td>
+                </tr>
+                
+           </table>
+           </form>
+           <br>
+        </section>
+    </section>
+
+<script>
+     $(document).ready( function() {
+        $('#summernote').summernote({
+        placeholder: "Hello Animal World!",
+		width:800,
+		height:500,
+		disableResizeEditor: true
+     	} );
+    }) ;
+  
+     $("#QuitToCafe").on("click", quitToCafe_member);
+     function quitToCafe_member(){
+         	  	let input=confirm("정말로 탈퇴하시겠습니까?");
+         	  	if(input){
+         			  let pwInput = prompt("사용하시던 아이디[${id}]는 재이용이 불가능합니다. "
+         					  	+"비밀번호를 입력하세요.");
+         			  if(pwInput){
+         				  alert(pwInput);
+         				  quitToCheckPassword(pwInput);
+         			  }
+         			  else{
+         				  alert("탈퇴 취소");
+         			  }
+         		  }
+         	  	else{
+         	  		
+         	  	}
+         	}
+         	function quitToCheckPassword(pwInput){
+         		$.ajax({
+         			url:"checkPWQuit.do",
+         			type:"post",
+         			async:false,
+         			data:{    				
+         				pwInput:pwInput,
+         			},
+         			dataType:"text",
+         			success: quitToCheckPasswordSendData,
+         			error: function(){
+         				alert("확인 데이터 전송 실패");
+         			}
+         			
+         		})
+         	}
+         	function quitToCheckPasswordSendData(){
+         		alert("비밀번호 체크 확인");
+         		
+         		if(${ispwOK == "yes"}){
+         			alert("탈퇴되었습니다.");
+         			location.href="startMain.jsp";
+         		}
+         		if(${ispwOK == "no"}){
+         			alert("일치하는 정보가 없습니다.");
+         		}
+         		<!-- location.href="startMain.jsp"; -->
+         	}
+         	function moveKindTable(kind){
+        		$.ajax({
+        			url:"showList.do",
+        			type:"get",
+        			async:"false",
+        			data:{
+        				subTableKind:kind,
+        			},
+        			dataType:"text",
+        			success:moveKindTableSendData,
+        			error:function(){
+        				alert("데이터 보내기 실패");
+        			}
+        		})
+        	}
+        	function moveKindTableSendData(){
+        		alert("테이블 데이터 보내기 성공");
+    		location.href="showKindList.jsp";
+        		
+        	}
+       
+
+    	function eventRegTableMenuBtn(){
+    		let btns = document.querySelectorAll(".tableMenuBtn");
+    		for(let i=0; i<btns.length; i++){
+    			btns[i].addEventListener("click",function(){
+    				let kind = btns[i].getAttributeNode("value").value;
+    				moveKindTable(kind);
+    			})
+    		}
+    	}
+    	window.onload=eventRegTableMenuBtn;
+     
+  </script>
+
+</body>
+</html>

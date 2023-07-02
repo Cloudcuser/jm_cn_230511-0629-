@@ -1,0 +1,45 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/joinToCafeOK")
+public class joinToCafeOK extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public joinToCafeOK() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		CafememberInfoDTO cmiDTO = new CafememberInfoDTO();
+		CafememberInfoDAO cmiDAO = new CafememberInfoDAO();
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String nickname = request.getParameter("nickname");
+		String hobby = request.getParameter("hobby");		
+		String question = request.getParameter("question");
+		String answer = request.getParameter("answer");
+		
+		cmiDTO.setId(id);
+		cmiDTO.setPw(pw);
+		cmiDTO.setNickname(nickname);
+		cmiDTO.setHobby(hobby);
+		cmiDTO.setAcntFindQuestion(question);
+		cmiDTO.setAnctFindAnswer(answer);
+		
+		
+	}
+
+}

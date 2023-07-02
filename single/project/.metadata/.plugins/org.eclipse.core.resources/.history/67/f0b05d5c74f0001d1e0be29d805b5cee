@@ -1,0 +1,38 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+
+import javax.naming.Context;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.sql.*;
+
+@WebServlet("/cafe_logInOK")
+public class cafe_logInOK extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private final String sId = getInitParameter("sId");
+	private final String sPw = getInitParameter("sPw");
+	private final String url = getInitParameter("url");
+	private final String driver = getInitParameter("driver");
+    
+    public cafe_logInOK() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 request.setCharacterEncoding("utf-8");
+		 String id = request.getParameter("uid");
+		 String pw = request.getParameter("upw");
+		 
+		 try {
+			Class
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		 
+	}
+
+}

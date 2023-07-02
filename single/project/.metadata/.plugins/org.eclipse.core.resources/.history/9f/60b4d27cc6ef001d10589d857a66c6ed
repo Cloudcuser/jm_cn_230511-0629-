@@ -1,0 +1,9 @@
+create table cafememberInfo(
+	id varchar(20) primary key,
+	pw varchar(20),
+	nickname varchar(30),
+	hobby varchar(30),
+	regDate date default current_timestamp,
+	lastComeDate date on update current_timestamp,
+	
+);

@@ -1,0 +1,149 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/MenutableInfo")
+public class MenutableInfoDTO extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+      
+	private int contentNo;
+	public int getContentNo() {
+		return contentNo;
+	}
+
+	public void setContentNo(int contentNo) {
+		this.contentNo = contentNo;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getWrittenDate() {
+		return writtenDate;
+	}
+
+	public void setWrittenDate(String writtenDate) {
+		this.writtenDate = writtenDate;
+	}
+
+	public String getTexts() {
+		return texts;
+	}
+
+	public void setTexts(String texts) {
+		this.texts = texts;
+	}
+
+	public int getReadCnt() {
+		return readCnt;
+	}
+
+	public void setReadCnt(int readCnt) {
+		this.readCnt = readCnt;
+	}
+
+	public int getHitCnt() {
+		return hitCnt;
+	}
+
+	public void setHitCnt(int hitCnt) {
+		this.hitCnt = hitCnt;
+	}
+
+	public int getComment() {
+		return comment;
+	}
+
+	public void setComment(int comment) {
+		this.comment = comment;
+	}
+
+	public String getComment_writer() {
+		return comment_writer;
+	}
+
+	public void setComment_writer(String comment_writer) {
+		this.comment_writer = comment_writer;
+	}
+
+	public String getComment_texts() {
+		return comment_texts;
+	}
+
+	public void setComment_texts(String comment_texts) {
+		this.comment_texts = comment_texts;
+	}
+
+	public String getComment_date() {
+		return comment_date;
+	}
+
+	public void setComment_date(String comment_date) {
+		this.comment_date = comment_date;
+	}
+
+	public int getIsNoticeThisOrAll() {
+		return isNoticeThisOrAll;
+	}
+
+	public void setIsNoticeThisOrAll(int isNoticeThisOrAll) {
+		this.isNoticeThisOrAll = isNoticeThisOrAll;
+	}
+
+	public String getSubTableTag() {
+		return subTableTag;
+	}
+
+	public void setSubTableTag(String subTableTag) {
+		this.subTableTag = subTableTag;
+	}
+
+	public String getMainTableTag() {
+		return mainTableTag;
+	}
+
+	public void setMainTableTag(String mainTableTag) {
+		this.mainTableTag = mainTableTag;
+	}
+
+	private String writer;
+	private String title;
+	private String writtenDate;
+	private String texts;
+	private int readCnt;
+	private int hitCnt;
+	private int comment;
+	private String comment_writer;
+	private String comment_texts;
+	private String comment_date;
+	private int isNoticeThisOrAll;
+	private String subTableTag;
+	private String mainTableTag;
+  
+    public MenutableInfoDTO() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+}

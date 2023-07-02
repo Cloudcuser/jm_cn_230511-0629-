@@ -1,0 +1,39 @@
+function eventRegQuitBtn(){
+	let btn = document.querySelector("#QuitToCafe");
+	btn.addEventListener('click',quitToCafe_member);
+}
+window.onload=eventRegQuitBtn;
+
+
+	function quitToCafe_member(){
+    	  	let input=confirm("정말로 탈퇴하시겠습니까?");
+    	  	if(input){
+    			  let pwInput = prompt("사용하시던 아이디[${id}]는 재이용이 불가능합니다. "
+    					  	+"비밀번호를 입력하세요.");
+    			  if(pwInput){    				  
+    				  quitToCheckPassword(pwInput);
+    			  }
+    			  else{
+    				  alert("탈퇴 취소");
+    			  }
+    		  }
+    	  	else{
+    	  		
+    	  	}
+    	}
+    	function quitToCheckPassword(pwInput){
+    		$.ajax({
+    			url:"checkPWQuit.do",
+    			type:"post",
+    			async:false,
+    			data:{    				
+    				pwInput:pwInput,
+    			},
+    			dataType:"text",    		
+    			error: function(){
+    				alert("확인 데이터 전송 실패");
+    			}
+    			
+    		})
+    	}
+  

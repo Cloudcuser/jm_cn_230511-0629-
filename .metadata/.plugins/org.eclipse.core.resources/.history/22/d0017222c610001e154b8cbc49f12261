@@ -1,0 +1,16 @@
+
+function quitToCafe_member(){
+    alert("정말로 탈퇴하시겠습니까?");
+}
+function eventRegPageLimit(){
+	let selectPos= document.getElementById("limitPostPrint");
+	selectPos.addEventListener("change",function(){
+		console.log("표시 수 변경:"+selectPos.value);
+	callPagePos();
+	})
+}
+$('#movePageBtn').on('mouseover focus', function(){
+	let btn = document.getElementById("movePageBtn");
+})
+
+window.onload = eventRegPageLimit;

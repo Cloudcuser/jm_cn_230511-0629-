@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" type=text/css href="cafe_pro_infoEdit.css">
+</head>
+<body>
+<form action="infoEditOK" method="post" name="infoEditForm">
+<table>
+	<caption>정보 수정</caption>
+	별명
+	취미
+	계정 찾기 질문
+	계정 찾기 답변
+	
+</table>
+
+</form>
+
+<script src="cafe_pro_infoEdit.js"></script>
+</body>
+</html>

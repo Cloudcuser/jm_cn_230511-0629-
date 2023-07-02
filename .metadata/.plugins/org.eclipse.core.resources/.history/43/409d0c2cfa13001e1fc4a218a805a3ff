@@ -1,0 +1,165 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/Pwchk")
+public class PwchkAndWork extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public PwchkAndWork() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		
+		String pw = request.getParameter("pw").trim();
+		String id = (String)session.getAttribute("id");	
+		String mode = request.getParameter("mode");	
+		
+		CafememberInfoDAO dao = new CafememberInfoDAO();
+		CafememberInfoDTO dto = new CafememberInfoDTO();
+		int on = 0;		
+		
+		System.out.println("pwchk mode on :"+mode);
+		//정보수정
+		if(mode.equals("editInfo"))
+		{
+			dto = dao.selectLog(id, pw, on);
+			if(pw.equals(dto.getPw()))
+			{
+				System.out.println("pwchk : 비밀번호 일치");
+				if(mode.equals("editInfo")) {
+					session.setAttribute("nickname", dto.getNickname());
+					session.setAttribute("hobby", dto.getHobby());
+					session.setAttribute("question", dto.getAcntFindQuestion());
+					session.setAttribute("answer", dto.getAnctFindAnswer());
+					
+					session.removeAttribute("mode");
+					response.sendRedirect("cafe_pro_infoEdit.jsp");
+				}
+			}
+			else {
+				System.out.println("pwchk : 비밀번호 불일치");
+			}
+		}
+		//게시글 수정 (최적화 x(menu dao) /기존 사용)
+		else if(mode.equals("postModi")) {
+			on = 2;
+			System.out.println("pwchk mode : postModify");
+			dto = dao.selectLog(id, pw, on);
+			if(dto.getVisitCnt() != -1) {
+				System.out.println("pwchk mode 2 modi : oper");
+				int contentNo = 0;
+				contentNo = (int)session.getAttribute("contentNo");
+				System.out.println("pwchk mode 2 modi : contentNo="+contentNo);
+				boolean flag = false;
+				if(contentNo != 0) {
+					MenutableInfoDAO tabDao = MenutableInfoDAO.getMenutableInfoDAO();
+					MenutableInfoDTO tabDto = new MenutableInfoDTO();
+					tabDto = tabDao.selectPost(contentNo);
+					if(tabDto != null) {
+						session.setAttribute("extraTag",tabDto.getExtraTag());
+						session.setAttribute("subTableTag", tabDto.getSubTableTag());
+						session.setAttribute("title", tabDto.getTitle());
+						session.setAttribute("isNoticeThisOrAll", tabDto.getIsNoticeThisOrAll());
+						session.setAttribute("table_id", tabDto.getTable_id());
+						session.setAttribute("texts", tabDto.getTexts());
+						flag = true;
+					}
+					if(flag) {
+						session.removeAttribute("mode");
+						response.sendRedirect("modifyPost.jsp");
+					}
+				}
+			}
+			else {
+				System.out.println("비밀번호 일치하지 않음");
+				out.println("<script>alert('비밀번호가 일치하지 않습니다.')</script>");
+				out.println("<script>history.go(-1)</script>");
+			}
+		}
+		//게시글 삭제 (일반) /비밀번호 확인-해당 댓글 삭제-해당 게시글 삭제
+		else if(mode.equals("postDel")) {
+			on = 3;
+			System.out.println("pwchk mode : postDel");
+			dto = dao.selectLog(id, pw, on);
+			int result = 0;
+			
+			int contentNo = 0;
+			contentNo = (Integer)session.getAttribute("contentNo");
+			System.out.println("pwchk postdel 포스트 넘버_contentNo: "+contentNo);			
+			
+			int tableNo = 0;
+			if(session.getAttribute("tableNo")==null) {
+				tableNo=0;
+			}
+			else {
+				tableNo = (Integer)session.getAttribute("tableNo");
+			}
+			System.out.println("pwchk postdel 댓글박스 넘버_tableNo(0=empty): "+tableNo);
+			System.out.println("pwchk postdel 받은 아이디: "+dto.getId());			
+			if(dto.getId().equals("checkOK")) {	
+				//포스트 삭제
+				if(contentNo != 0) {		
+					//댓글박스 삭제
+					if(contentNo == tableNo)  {
+						CommentBoxDAO cboxDao = CommentBoxDAO.getBox();
+						result = cboxDao.deleteBox(tableNo);
+						if(result != 0) {
+							System.out.println("댓글 박스 삭제 성공");
+						}
+					}
+					MenutableInfoDAO tabDao = MenutableInfoDAO.getMenutableInfoDAO();
+					result = tabDao.deletePost(contentNo);
+					if(result!=0) {
+						System.out.println("포스트 삭제 성공");
+						session.removeAttribute("mode");
+						out.println("<script>alert('해당 게시글을 삭제했습니다.')</script>");
+						out.println("<script>location.href='showList.do'</script>");
+					}
+				}
+				else if(contentNo == 0 ) {
+					MenutableInfoDAO tabDao = MenutableInfoDAO.getMenutableInfoDAO();
+					result = tabDao.deletePost(contentNo);
+					if(result!=0) {
+						System.out.println("포스트 삭제 성공");
+						session.removeAttribute("mode");
+						out.println("<script>alert('해당 게시글을 삭제했습니다.')</script>");
+						out.println("<script>location.href='showList.do'</script>");
+					}
+				}
+			}
+			else {
+				System.out.println("비밀번호 일치하지 않음");
+				out.println("<script>alert('비밀번호가 일치하지 않습니다.')</script>");
+				out.println("<script>history.go(-1)</script>");
+			}
+			
+		}
+		else {
+			System.out.println("비밀번호 일치하지 않음");
+			out.println("<script>alert('비밀번호가 일치하지 않습니다.')</script>");
+			out.println("<script>history.go(-1)</script>");
+		}
+		
+		
+		
+	}
+
+}

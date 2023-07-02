@@ -1,0 +1,14 @@
+function logInSub(event){
+    let getSub = document.getElementById("logIn");
+    getSub.addEventListener(`click`, goToCafeMain);
+}
+function goToCafeMain(){
+    location.assign("cafe_pro_cafeMain.html")
+}
+function joinSubmit(event){
+    let getSub = document.getElementById("joinSub");
+    getSub.addEventListener(`click`,goToJoinCafe);
+}
+function goToJoinCafe(){
+    location.assign("cafe_pro_joinToCafe.html");
+}

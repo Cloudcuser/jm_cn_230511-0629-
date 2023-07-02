@@ -1,0 +1,37 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/cafe_logOut")
+public class cafe_pro_logOut extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public cafe_pro_logOut() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		session.invalidate();
+		 out.println("<!doctype>");
+		 out.println("<html>");
+		 out.println("<head></head>");
+		 out.println("<body>");
+		 out.println("<script>alert('유효한 아이디 혹은 비밀번호가 존재하지 않습니다.')</script>");
+		 out.println("<script>location.href='cafe_proj_cafeMain.jsp'</script>");
+		 out.println("</body>");
+		 out.println("</html>");
+		 
+			/* response.sendRedirect("cafe_proj_cafeMain.jsp"); */
+	}
+
+}

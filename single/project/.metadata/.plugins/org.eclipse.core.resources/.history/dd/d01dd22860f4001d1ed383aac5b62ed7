@@ -1,0 +1,13 @@
+package com.cafeprojF.www;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+/**
+ * Servlet implementation class CafeBasicInfoDTO
+ */
+@WebServlet("/CafeBasicInfoDTO")
+public class CafeBasicInfoDTO extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+}

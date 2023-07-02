@@ -1,0 +1,37 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+
+import javax.naming.Context;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.sql.*;
+
+@WebServlet("/cafe_logInOK")
+public class cafe_logInOK extends HttpServlet {
+	private static final long serialVersionUID = 1L;	
+    
+    public cafe_logInOK() {
+        super();
+    }
+    
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+    	super.init(config);    	
+    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 System.out.println("login 확인 영역");
+		 request.setCharacterEncoding("utf-8");
+		 String id = request.getParameter("uid");
+		 String pw = request.getParameter("upw");
+		 CafememberInfoDTO cmiDTO = new CafememberInfoDTO();
+		 cmiDTO.setId(id);
+		 cmiDTO.setPw(pw);		 
+		 
+	}
+
+}

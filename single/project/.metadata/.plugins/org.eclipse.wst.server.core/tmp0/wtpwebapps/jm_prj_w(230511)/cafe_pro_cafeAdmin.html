@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe_pro_cafeAdmin</title>
+    <link rel="stylesheet" type="text/css" href="cafe_pro_cafeAdmin.css">
+
+</head>
+<body>
+    <div class="top">
+        <div id="gnl">
+            <!-- 상단 통합 메뉴 공간 -->
+            <ul>
+                <li id="goToCafeHome"><a href="cafe_proj_cafeMain.jsp">메인 홈</a> </li>
+                <li id="goToMainSite"><a href="#">메인 포털 사이트</a> </li>               
+            </ul>
+        </div>
+    </div>
+    <header>
+        <div id="admin_headerPos">
+            카페 관리 - 메인 - 게시판 편집
+        </div> 
+    </header>
+    <main>
+        <input id="cafeInfoEdit" type="radio" name="tab" checked="checked" value="카페 정보 편집" onclick="header_windowPos(event,`main`)">
+        <input id="tableEdit" type="radio"  name="tab" value="게시판 편집" onclick="header_windowPos(event, `main`)" />
+        <input id="admin_member" type="radio"  name="tab" value="회원 관리" onclick="header_windowPos(event, `main`)"/>
+        <input id="admin_staff" type="radio"  name="tab" value="스태프 관리" onclick="header_windowPos(event, `main`)"/>
+        <input id="cafeLayout" type="radio"  name="tab" value="카페 메인 레이아웃" onclick="header_windowPos(event, `main`)">
+        <input id="event_config" type="radio" name="tab" value="이벤트 관리" onclick="header_windowPos(event, `main`)">
+        <input id="showCafePerformance" type="radio" name="tab" value="카페 활동 조회" onclick="header_windowPos(event,`main`)">
+
+        <section class="admin_mainBtn">
+            <label for="cafeInfoEdit">카페 정보 편집</label>
+            <label for="tableEdit">게시판 편집</label>
+            <label for="admin_member">회원 관리</label>
+            <label for="admin_staff">스태프 관리</label>
+            <label for="cafeLayout">카페 메인 레이아웃</label>
+            <label for="event_config">이벤트 관리</label>
+            <label for="showCafePerformance">카페 활동 조회</label>
+        </section>
+        <!-- admin_tableEdit menu -->
+        <section class="admin_mainSettingMenu_tableEdit_menu">
+            <input id="tableEdit_normalTable" type="radio"  name="sub" checked="checked" value="기본 게시판" 
+            onclick="header_windowPos(event, `editSub`)">
+            <input id="tableEdit_memoTable" type="radio"  name="sub" value="메모 게시판" 
+            onclick="header_windowPos(event, `editSub`)">           
+
+            <div id="admin_mainSettingMenu_tableEdit_menuBtn">
+                <label for="tableEdit_normalTable">기본 게시판</label>
+                <label for="tableEdit_memoTable">메모 게시판</label>                
+            </div>
+            <section>
+                <div id=normalTable_window>
+                    <table>
+                        <tr>
+                            <td>table123</td>                        
+                        </tr>
+                        <tr>
+                            <td>table123</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=memoTable_window>
+                    <table>
+                        <tr>
+                            <td>table456</td>                        
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+        </section>
+        <!-- admin_member menu -->
+        <section class="admin_mainSettingMenu_admin_member_menu">
+            <input id="admin_member_memberList" type="radio"  name="sub2" value="회원 조회" checked="checked"
+            onclick="header_windowPos(event, `memberSub`)">
+            <input id="admin_member_gradeConfig" type="radio"  name="sub2" value="회원 등급 설정" 
+            onclick="header_windowPos(event, `memberSub`)">           
+
+            <div id="admin_mainSettingMenu_admin_member_menuBtn">
+                <label for="admin_member_memberList">회원 조회</label>
+                <label for="admin_member_gradeConfig">회원 등급 설정</label>                
+            </div>
+            <section>
+                <div id=memberList_window>
+                    <table>
+                        <tr>
+                            <td>table set1</td>                        
+                        </tr>
+                        <tr>
+                            <td>table set2</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=gradeConfig_window>
+                    <table>
+                        <tr>
+                            <td>Member Name : Config1, 2</td>                        
+                        </tr>
+                        <tr>
+                            <td>Member Name : Config1, 2</td>
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+        </section>
+        <!-- admin_staff menu -->
+        <section class="admin_mainSettingMenu_admin_staff_menu">
+            <input id="admin_staff_performance" type="radio"  name="sub3" value="스탭 조회" checked="checked"
+            onclick="header_windowPos(event, `staffSub`)">
+            <input id="admin_staff_privConfig" type="radio"  name="sub3" value="스탭 권한 설정" 
+            onclick="header_windowPos(event, `staffSub`)">
+            <input id="admin_staff_warningRecord" type="radio"  name="sub3" value="스탭 제제 기록" 
+            onclick="header_windowPos(event, `staffSub`)">          
+
+            <div id="admin_mainSettingMenu_admin_staff_menuBtn">
+                <label for="admin_staff_performance">스탭 조회</label>
+                <label for="admin_staff_privConfig">스탭 권한 설정</label>
+                <label for="admin_staff_warningRecord">스탭 제제 기록</label>             
+            </div>
+            <section>
+                <div id=staff_performance_window>
+                    <table>
+                        <tr>
+                            <td>this your performance 1</td>                        
+                        </tr>
+                        <tr>
+                            <td>well done!!</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=staff_privConfig_window>
+                    <table>
+                        <tr>
+                            <td>this table edit previleges</td>                        
+                        </tr>
+                        <tr>
+                            <td>here you are!</td>
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=staff_warningRecord_window>
+                    <table>
+                        <tr>
+                            <td>I warned by member1</td>                        
+                        </tr>
+                        <tr>
+                            <td>because he is posting too much~</td>
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+        </section>
+        <!-- cafeLayout menu -->
+        <section class="admin_mainSettingMenu_cafeLayout_menu">
+            <input id="cafeLayout_change_mainLayout" type="radio" name="sub4" value="메인 레이아웃 변경" checked="checked"
+            onclick="header_windowPos(event, `layoutSub`)">
+            <input id="cafeLayout_admin_templates" type="radio" name="sub4" value="레이아웃 템플릿 관리" 
+            onclick="header_windowPos(event, `layoutSub`)">           
+
+            <div id="admin_mainSettingMenu_cafeLayout_menuBtn">
+                <label for="cafeLayout_change_mainLayout">메인 레이아웃 변경</label>
+                <label for="cafeLayout_admin_templates">레이아웃 템플릿 관리</label>                
+            </div>
+            <section>
+                <div id=change_mainLayout_window>
+                    <table>
+                        <tr>
+                            <td>what do you want to color? </td>                        
+                        </tr>
+                        <tr>
+                            <td>this way?</td>
+                        </tr>
+                        <tr>
+                            <td>tableList is here(float:right)</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=admin_templates_window>
+                    <table>
+                        <tr>
+                            <td>this is animal_august theme</td>                        
+                        </tr>
+                        <tr>
+                            <td>this is animal_winter theme</td>
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+        </section>
+        <!-- event_config menu-->
+        <section class="admin_mainSettingMenu_event_config_menu">
+            <input id="event_config_eventCalender" type="radio"  name="sub5" value="이벤트 달력" checked="checked"
+            onclick="header_windowPos(event, `eventConfigSub`)">
+            <input id="event_config_eventList" type="radio"  name="sub5" value="이벤트 리스트" 
+            onclick="header_windowPos(event, `eventConfigSub`)">           
+
+            <div id="admin_mainSettingMenu_event_config_menuBtn">
+                <label for="event_config_eventCalender">이벤트 달력</label>
+                <label for="event_config_eventList">이벤트 리스트</label>                
+            </div>
+            <section>
+                <div id=eventCalender_window>
+                    <table>
+                        <tr>
+                            <td>this is a eventCalender</td>                        
+                        </tr>
+                        <tr>
+                            <td>table calender come soon</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <div id=eventList_window>
+                    <table>
+                        <tr>
+                            <td>8/17 ~ 9/14 반려동물 산책 주간</td>                        
+                        </tr>
+                        <tr>
+                            <td>11/4~ 11/30 인생 동물 한 컷 응모전</td>
+                        </tr>                        
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main> 
+    
+
+    <script src="cafe_pro_cafeAdmin.js"></script>
+
+</body>
+</html>

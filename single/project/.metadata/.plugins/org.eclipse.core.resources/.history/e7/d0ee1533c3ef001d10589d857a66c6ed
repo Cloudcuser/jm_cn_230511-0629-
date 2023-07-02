@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	sql id = "root";
+	sql pw = "1234";
+	previlige option = grant all.
+	sql url = "jdbc:mysql://localhost:3306/(dbname)?serverTimezone=UTC";
+	driver class name = "com.mysql.cj.jdbc.driver";
+	
+	try/resource method
+	-Connection
+	-ResultSet
+	-PrepareStatement
+	
+	1. name. : JNDI calls name set ex) "jdbc/testdb";
+	2. auth. : DBCP administrator.
+		Container or Application
+		-Container
+	3. driverClassName
+		:It is Class driver 
+		 for use the JDBC Connection
+		 
+	4. url : DB Connetion url address
+	5. id = user name
+	6. pw = user password
+	7. type = "javax.sql.DataSource"
+		:this resource's return type.
+		Datasource can return Connection Object
+	8. maxActive. maxTotal="50"
+		:maxConnectionApprovedNumber
+	9. maxWaitMillis="1000"
+		:Return to DB Connection
+		waiting timeout. -1:infinity.
+	10. removeAbandonedOnBorrow="true"
+		:when not enough can using
+		Connections, 
+		restore to dropped Connection Object;
+	
+	11. removeAbandonedTimeout="5"
+		:time limit to judge for 
+		trashed Connection Object;
+
+	12. logAbandoned="true"
+		:code address's log where 
+		wasted Connection resource;
+	
+		
+ -->

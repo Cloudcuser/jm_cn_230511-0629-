@@ -1,0 +1,49 @@
+function eventRegQuitBtn(){
+	let btn = document.querySelector("#QuitToCafe");
+	btn.addEventListener('click',quitToCafe_member);
+}
+
+		
+function isOK(mode){
+				var v1 = mode;
+				console.log("##");
+				if(v1=='1'){
+					/*console.log("#2");		*/			
+						var find = confirm("수정하시겠습니까?");
+						if(find){
+							//location.href="cafe_pro_PWPass_info.jsp?mode=postModi";
+							location.href="modify.do";
+						}		
+				}
+				else if(v1=='2'){
+			/*		console.log("#2");					*/				
+						var find = confirm("삭제하겠습니까?");
+						if(find){
+							//location.href="cafe_pro_PWPass_info.jsp?mode=postDel";
+							location.href="delete.do";
+						}					
+				}
+				else if(v1=='3'){
+					/*console.log("#2");*/
+						var find = confirm("삭제하시겠습니까?");
+						if(find){
+							//var win1 = window.open("inputBec.jsp","inputBec", "width=500, height=300, left=300, top=400");
+								
+							location.href="inputBec.jsp";			
+						}
+				}
+}
+function watchWaring(watch){
+	if(watch=='on'){
+		alert('이미 삭제된 글입니다. 접근하실 수 없습니다.');
+		location.href='showList.do';			
+		moveToList();
+	}	
+}
+function checkLogIn(watch){
+	if(watch=='on'){
+		alert('해당 게시글은 로그인 후 접근이 가능합니다.');
+		location.href='startMain.jsp';
+	}
+}
+

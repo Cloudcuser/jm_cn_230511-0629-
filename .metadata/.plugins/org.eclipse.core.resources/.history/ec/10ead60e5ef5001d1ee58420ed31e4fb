@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+ 	<c:set var="id" value="${sessionScope.id }" />
+
+<c:choose>
+ 	<c:when test="${not empty id}">
+		<c:when test="${empty question}">
+			<script>
+				alert('계정 찾기용 질문이 없습니다. 관리자에게 문의해주세요.')
+				location.href="cafe_proj_cafeMain.jsp";
+			</script>
+		</c:when>
+	</c:when>
+</c:choose>
+
+<body>
+<form action="findIdOrPw?mode=2" method="post" name="findIdForm">
+	<table id="findIdTable">
+		<caption>비밀번호 찾기</caption>
+		<tr>
+			<td>아이디</td><td><input type="text" name="id" id="id" placeholder="아이디" value="${id }" /></td>
+			
+		</tr>
+		<tr>
+			<td>계정 찾기 질문</td>
+			<td>			
+				<select name="question">
+					<option value="졸업한 초등학교는?">졸업한 초등학교는?</option>
+					<option value="내게 가장 소중한 보물은?">내게 가장 소중한 보물은?</option>
+					<option value="가장 좋아하는 동물은?">가장 좋아하는 동물은?</option>
+				</select>
+			</td>
+			
+		</tr>
+		<tr>
+			<td>계정 찾기 정답</td>
+			<td><input type="text" name="answer" id="answer" placeholder="정답을 입력해주세요" /></td>
+		</tr>			
+		<tr>
+			
+			<td>
+				<a href="cafe_findId.jsp"><input type="button" value="아이디 찾기" /></a>
+				<input type="submit" value="확인" />
+			</td>
+		</tr>
+			
+	</table>
+</form>
+</body>
+</html>

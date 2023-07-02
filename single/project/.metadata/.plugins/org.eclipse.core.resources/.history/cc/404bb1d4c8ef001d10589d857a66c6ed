@@ -1,0 +1,14 @@
+create table cafememberInfo(
+	id varchar(20) not null primary key,
+	pw varchar(20) not null,
+	nickname varchar(30) not null,
+	hobby varchar(30) not null,
+	regDate date default current_timestamp not null,
+	lastComeDate date on update current_timestamp not null,
+	acntFindQuestion varchar(100),
+	acntFindAnswer varchar(100),
+	profile_image longblob not null,
+	isStaff set('none', 'manager', 'submanager', 'event', 'table', 'design') not null;
+--	freezeAcnt date 
+	
+);

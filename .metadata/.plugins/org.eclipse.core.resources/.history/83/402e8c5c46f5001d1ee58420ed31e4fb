@@ -1,0 +1,65 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/Pwchk")
+public class Pwchk extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public Pwchk() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		HttpSession session = request.getSession();
+		String pw = request.getParameter("pw");
+		String id = (String)session.getAttribute("id");		
+		String mode = request.getParameter("mode");
+		PrintWriter out = response.getWriter();
+		
+		CafememberInfoDAO dao = new CafememberInfoDAO();
+		CafememberInfoDTO dto = new CafememberInfoDTO();
+		int on = 0;
+		Object obj = dao.selectLog(id, pw, on);
+		
+		if(obj!=null)
+		{
+			if(pw.equals(dto.getPw()))
+			{
+				System.out.println("pwchk : 비밀번호 일치");
+				if(mode.equals("editInfo")) {
+					session.setAttribute("nickname", dto.getNickname());
+					session.setAttribute("hobby", dto.getHobby());
+					session.setAttribute("question", dto.getAcntFindQuestion());
+					session.setAttribute("answer", dto.getAnctFindAnswer());
+					
+					response.sendRedirect("cafe_pro_infoEdit.jsp");
+				}
+			}
+		}
+		else {
+			System.out.println("비밀번호 일치하지 않음");
+			out.println("<script>window.history.go(-1)</script>");
+		}
+		
+		
+		
+	}
+
+}

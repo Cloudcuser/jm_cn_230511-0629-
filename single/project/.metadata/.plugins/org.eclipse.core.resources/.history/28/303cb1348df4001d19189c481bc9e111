@@ -1,0 +1,23 @@
+package com.cafeprojF.www;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+public class InitDataTocafeMain extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public String InitDataTocafeMain() {    	
+    	CafememberInfoDAO cmiDAO = new CafememberInfoDAO();
+    	String data = cmiDAO.sendDataToMain();
+    	
+    	CafeBasicInfoDAO 
+    	
+    	return data;
+    }
+
+	public void init(ServletConfig config) throws ServletException {
+	}
+
+}

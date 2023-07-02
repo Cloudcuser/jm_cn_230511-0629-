@@ -1,0 +1,43 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/cafe_logOut")
+public class Cafe_pro_logOut extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public Cafe_pro_logOut() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");	
+		HttpSession session = request.getSession();
+		session.invalidate();
+		PrintWriter out = response.getWriter();
+		
+			
+		
+		 
+		out.println("<!doctype>");
+		out.println("<html>");
+		out.println("<head></head>");
+		out.println("<body>");
+		out.println("<script>alert('로그아웃되었습니다.')</script>");
+		out.println("<script>location.href='mainStart.jsp'</script>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();
+			/* response.sendRedirect("cafe_proj_cafeMain.jsp"); */
+	}
+
+}

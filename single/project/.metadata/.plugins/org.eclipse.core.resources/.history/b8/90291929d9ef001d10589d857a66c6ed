@@ -1,0 +1,71 @@
+package com.cafeprojF.www;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/MenutableInfoDAO")
+public class MenutableInfoDAO extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	private final String sId = "root";
+	private final String sPw = "1234";
+	private final String url = "jdbc:mysql://localhost:3306/nicedb?serverTimezone=UTC";
+	private final String driver = "com.mysql.cj.jdbc.driver";
+    public MenutableInfoDAO() {
+        super();
+        try {
+        	Class.forName(driver);
+        }
+        catch(ClassNotFoundException e) {
+        	System.out.println("게시판DAO 드라이버 로드 실패");
+        }
+    }
+    public ArrayList<MenutableInfoDTO> selectBoard(){
+		String query = "select * from menutableinfo(contentNo, writer, title,"
+				+ "writtenDate, texts, readCnt, hitCnt, comment, comment_writer,"
+				+ "comment_texts, comment_date, isNoticeThisOrAll, subTableTag, mainTableTag)";
+		
+		ArrayList<MenutableInfoDTO> list = new ArrayList<>();
+		try 
+			(
+				Connection conn = DriverManager.getConnection(url, sId, sPw);
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();
+			)
+			{
+			
+				while(rs.next()) {
+					
+					MenutableInfoDTO mtiDTO = new MenutableInfoDTO();         
+					mtiDTO.setContentNo(rs.getInt("contentNo"));
+					mtiDTO.setWriter(rs.getString("writer"));
+					mtiDTO.setTitle(rs.getString("title"));
+					mtiDTO.setWrittenDate(rs.getString("writtenDate"));
+					mtiDTO.setTexts(rs.getString("texts"));
+					
+				}
+				return list;
+			}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+}

@@ -1,0 +1,99 @@
+
+.whole div video{  
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+a{
+	text-decoration: none;
+}
+.top #gnl{
+    position: absolute;
+    top:0;
+    margin-top: 10px;
+    right:50px;
+    display: block;
+    border-radius: 10px 10px;
+}
+.top #gnl ul{
+    overflow: hidden;
+    display: inline-block;
+    padding:2px 10px;    
+}
+.top #gnl ul li{
+    float: left;
+    color:white;
+    list-style-type: none;
+    border-right:1px solid rgb(0, 0, 0); 
+}
+.top #gnl ul li a{
+    padding: 8px 12px;
+    text-decoration: none;  
+    color:white;   
+}
+.top #gnl ul li a:hover{
+    color:bisque;
+    /* background-color: rgba(0,0,0,0.1); */
+    background-color: aqua;
+    border-radius: 20px 20px;
+    font-size:1.1em;
+}
+section .join_window{
+    position: absolute;
+    top:300px;
+    left:800px;    
+}
+table{
+    width:350px;
+    background-color: aliceblue;
+    padding-bottom: 2px;
+}
+table caption{
+    border-bottom: none;
+    background-color: rgb(171, 211, 245);
+    /* border-left: 2px solid black;
+    border-right: 2px solid black; */
+    font-size: 1.2em;
+    /* box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5) inset; */
+}
+table tr{
+    border:2px solid black;
+}
+table td{
+    /* border-bottom: 2px solid grey; */
+    padding-bottom: 5px;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+td:hover{
+    background-color:rgba(188, 248, 248, 0.671);
+}
+table input:not(input[type="submit"],
+    input[type="button"]){
+    float: right;
+    padding-right: 20px;
+}
+table input[type="button"]{
+    margin:2px;
+    margin-left: 20px;
+    padding: 6px;
+    box-shadow: 1px 1rgb(255, 255, 255)x 1px rgba(0,0,0,0.2) inset;
+    cursor: pointer;
+    border:1px solid grey;
+    background-color:azure;
+}
+table input[type="submit"]{
+    margin:2px;
+    margin-left: 20px;
+    padding:6px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2) inset;
+    cursor: pointer;
+    border:1px solid grey;
+    background-color:azure;
+}
+table input:hover{
+    background-color:rgba(188, 248, 248, 0.671);
+}
+/* table input[type="submit"]:active{
+    background-color: rgb(100, 253, 202);
+} */

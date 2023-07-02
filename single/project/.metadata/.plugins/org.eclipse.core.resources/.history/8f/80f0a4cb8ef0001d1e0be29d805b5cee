@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe_pro_joinToCafe</title>
+    <link rel="stylesheet" type="text/css" href="cafe_pro_joinToCafe.css">
+</head>
+<body>
+    <section class="whole">  
+        <div>     
+            <video src="video_src/cafeJoin/istock-866276848_preview.mp4" autoplay loop muted ></video>
+        </div>
+    </section>
+    <div class="top">        
+            <div id="gnl">
+                <!-- 상단 통합 메뉴 공간 -->
+                <ul>
+                    <li id="goToCafeHome"><a href="cafe_pro_cafeMain.html">카페 홈</a> </li>
+                    <li id="goToMainSite"><a href="#">메인 포털 사이트</a> </li>               
+                </ul>
+            </div>
+    </div>    
+    <section>
+        <section class="join_window">
+        	<form action="joinToCafeOK" name="joinForm" method="post" onsubmit="return pwChk()">
+            <table>
+                <caption>회원 가입</caption>
+                <tr>
+                    <td> 아이디: <input type="text" required="required" title="Id" required id="id"></td>
+                </tr>
+                <tr>
+                    <td> 비밀번호: <input type="password" required="required" title="password" required id="pw"></td>
+                </tr>
+                <tr>
+                    <td> 비밀번호 확인: <input type="password" required="required" title="password2" required id="pw2"></td>
+                </tr>
+                <tr>
+                    <td> 이름: <input type="text" required="required" title="name" required> </td>
+                </tr>
+                <tr>
+                    <td> 나이: <input type="text" required="required" title="age" required></td>
+                </tr>
+                <tr>
+                    <td> 이메일: <input type="text" title="e-mail" required></td>
+                </tr>
+                <tr>                  
+                    <td>                  
+                        <a href="cafe_findId.jsp"><input type="button" value="아이디 찾기" id="findId"></a>
+                        <a href="cafe_findPw.jsp"><input type="button" value="비밀번호 찾기" id="findPW"></a>                        
+                        <a href="cafe_proj_joinToCafe"><input type="submit" value="회원가입" id="joinSub"  title="회원가입"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <footer>
+                            ※ 이메일 입력 시 비밀번호 찾기 확인 메일, 이벤트 등 카페 소식 수신이 가능합니다.
+                        </footer>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </section>
+    </section>
+    <script src="cafe_pro_joinToCafe.js"></script>
+</body>
+</html>

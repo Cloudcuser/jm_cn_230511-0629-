@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+
+<%-- <c:choose>
+	<c:when test="${empty question}">
+		<script>
+			alert('계정 찾기용 질문이 없습니다. 관리자에게 문의해주세요.')
+			location.href="cafe_proj_cafeMain.jsp";
+		</script>
+	</c:when>
+</c:choose> --%>
+
+<body>
+<form action="findIdOrPw">
+	<table>
+		<caption></caption>
+		<tr>
+			<td>아이디</td><td><input type="text" name="id" id="id" placeholder="아이디" /></td>
+			
+		</tr>
+		<tr>
+			<td>계정 찾기 질문</td>
+			<td><input type="text" name="question" id="question" pa /> </td>
+		</tr>
+		<tr>
+			<td>계정 찾기 정답</td>
+			<td><input type="text" name="answer" id="answer" placeholder="정답을 입력해주세요" /></td>
+		</tr>			
+		<tr>
+			<td><input type="submit" value="확인" /></td>
+		</tr>
+			
+	</table>
+</form>
+</body>
+</html>

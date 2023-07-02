@@ -1,0 +1,25 @@
+
+function quitToCafe_member(){
+    alert("정말로 탈퇴하시겠습니까?");
+}
+function eventRegPageLimit(){
+	let selectPos= document.getElementById("limitPostPrint");
+	selectPos.addEventListener("change",function(){
+		console.log("표시 수 변경:"+selectPos.value);
+	callPagePos();
+	})
+}
+function eventRegPageBtn(){
+	let btn = document.getElementById("movePageBtn");
+	btn.addEventListener("click", function(){
+		console.log(btn.value);
+	})
+}
+
+$('#movePageBtn').on('click', function(){
+	let btn = document.getElementById("movePageBtn");
+	console.log(btn);
+})
+
+window.onload = eventRegPageLimit;
+window.onload = eventRegPageBtn;

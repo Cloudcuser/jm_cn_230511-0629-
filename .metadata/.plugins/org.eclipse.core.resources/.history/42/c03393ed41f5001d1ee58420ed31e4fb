@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>cafe_pro_infoEdit</title>
+<link rel="stylesheet" type=text/css href="cafe_pro_infoEdit.css">
+</head>
+<body>
+<form action="infoEditOK" method="post" name="infoEditForm">
+<table>
+	<caption>정보 수정</caption>	
+	
+	<tr>
+		<td>별명</td><td><input type="text" value="${nickname}" /></td>
+	</tr>
+	<tr>
+		<td>취미</td><td><input type="text" value="${hobby}" /></td>
+	</tr>
+	<tr>
+		<td>계정 찾기 질문</td><td><input type="text" value="${question}" /></td>
+	</tr>
+	<tr>
+		<td>계정 찾기 답변</td><td><input type="text" value="${answer}" /></td>
+	</tr>
+	<tr>
+		<td>
+			<input type="submit" value="수정"/>
+			<a href="cafe_proj_cafeMain.jsp"></a><input type="button" value="돌아가기" />
+		</td>
+		</td>
+	</tr>
+</table>
+
+</form>
+
+<script src="cafe_pro_infoEdit.js"></script>
+</body>
+</html>
