@@ -12,7 +12,7 @@
 
 <section class="whole">  
         <div>     
-            <video src="video_src/logIn/istock-866276848_preview.mp4" autoplay loop muted></video>
+            <img id="backgroundImg" alt="#" src="./image_src/joinToCafe/beach-ga885d0fde.jpg" />
         </div>
   	</section>
     <div class="top">        
