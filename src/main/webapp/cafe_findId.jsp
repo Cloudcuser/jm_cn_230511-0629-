@@ -12,7 +12,7 @@
 
 <section class="whole">  
         <div>     
-            <img id="backgroundImg" alt="#" src="./image_src/joinToCafe/beach-ga885d0fde_1920.jpg" />
+            <img id="backgroundImage" alt="#" src="./image_src/joinToCafe/beach-ga885d0fde_1920.jpg" />
         </div>
   	</section>
     <div class="top">        
