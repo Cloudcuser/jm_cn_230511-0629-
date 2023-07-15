@@ -1,0 +1,666 @@
+body{
+    background-image: url("../image_src/main/hd-wallpaper-g52c614daf_1920.jpg");
+	height:1200px;
+}
+li{
+	list-style-type: none;
+}
+header{
+    position: relative;
+    width:1900px;
+    top:0;
+    left:0;
+    height:200px;
+    /* background-image: url("image_src/main/header_src/animal-g8de38a652_1920.jpg"),
+    url("image_src/main/header_src/dog-geac133045_1920.jpg"),
+    url("image_src/main/header_src/rat-gdf71bce33_1920.jpg"),
+    url("image_src/main/header_src/sandpipers-gb164a8c8e_1920.jpg"),
+    url("image_src/main//header_src/hare-gab28bd4ec_1920.jpg"); */
+    background-size: auto 250px, auto 350px, auto 250px, auto 250px;
+    background-position: 0px, 350px, 750px, 1120px, 1530px;
+    background-repeat: no-repeat;
+}
+header img{
+    height:200px;
+    width:300px;
+    display: inline-block;  
+    margin:0px;
+    padding:0px;    
+}
+header #title_text{
+    font-size: 3.0em;
+    text-align: center;
+    line-height: 200px;
+    text-shadow: 3px 3px 4px rgb(63, 62, 62);
+    color:white;
+    font-style: italic;
+    font-family: 'Alkatra', cursive;
+}
+header:hover a{
+    display: block;
+    cursor: pointer;
+}
+header a{
+    display: none;
+    width:1900px;
+    height:200px;
+    position: absolute;
+    top:0px;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+a:hover{
+    /* color:blue; */
+    font-size:1.0em;
+}
+.top #gnl{
+    position: absolute;
+    top:0;
+    margin-top: 10px;
+    right:50px;
+    display: block;
+    border-radius: 10px 10px;
+}
+.top #gnl ul{
+    overflow: hidden;
+    display: inline-block;
+    padding:2px 10px;    
+}
+.top #gnl ul li{
+    float: left;
+    list-style-type: none;
+    border-right:1px solid rgb(0, 0, 0); 
+}
+.top #gnl ul li a{
+    padding: 8px 12px; 
+       
+}
+.top #gnl ul li a:hover{
+    color:blue;
+    background-color: rgba(0,0,0,0.1);
+    font-size:1.1em;
+}
+.top #title{
+    background-color: none;
+}
+nav{
+    float:left;
+    width:350px;
+    height:auto;
+    border-radius: 10px 10px;
+    color:black;
+    margin-left: 30px;
+}
+nav a, nav ul, nav button{
+    color:black;
+}
+nav ul.memberMenu li#markNickname{
+	text-align: center;
+}
+
+.cafe_mainMenu{
+  	border-radius: 10px 10px;
+    background-image: url("../image_src/main/nav_src/feet-g8989fb746_640.png");
+    background-size: 70px 70px;
+    background-repeat: no-repeat;
+    background-position: 250px 40px;
+    margin-top:50px;
+    margin-bottom: 5px;
+}
+.cafe_mainMenu a:hover:not(#joinToCafe, #logIn),  #newPosting:hover {
+    color:blue;
+    background-color: beige;
+}
+#joinToCafe:hover,  #logIn:hover{
+    color:blue;
+}
+.cafe_profile{
+    padding: 10px 25px;
+    background-color: white;
+    border-radius: 10px 10px;
+    margin-bottom: 10px; 
+}
+.cafe_profile a{
+    display: block;
+}
+.cafe_profile #cafeName{
+    text-align: center;
+    border-bottom: 2px solid grey;
+}
+div#curCafeGrade{
+	padding-top:10px;
+}
+div#profile_menubar{
+	border-bottom: 2px solid grey;
+	padding-bottom:10px;
+}
+#logIn{
+    text-align: center;
+    color:black;
+    padding-left:20px;
+}
+#joinToCafe{
+    text-align: center;
+    color:black;
+    border-left: 4px solid white;
+    padding-left:50px;
+}
+#newPostBox{
+	padding-bottom: 5px;
+}
+#newPosting {
+	text-align: center;
+    display: inline-block;
+    background-color: #5cd1e5;
+    color: white;
+    padding: 2px 9px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    margin-left: 98px;
+}
+.cafe_mainMenu ul.memberMenu{
+    overflow: hidden;
+    border-top: 2px solid white;    
+    margin:0px;
+    padding-left: 0px;     
+}
+.cafe_mainMenu ul li{
+    float:left;
+    list-style-type: none;
+    padding-left: 60px;
+    display: block;
+}
+div.table_menu ul li:hover{
+	color:black;
+	background-color: beige;
+	list-style-type: none;
+}
+div.table_menu ul li{	
+	list-style-type: circle;
+	display: contents;
+}
+div.table_menu ul li a{
+	padding-left:10px;
+}
+
+button#QuitToCafe{
+    border: none;
+    border-radius: 5px 5px;
+    margin-left: 120px;
+    width: 100px;
+    height:50px;
+    font-size: 1.1em;
+    margin-top:5px;
+}
+button#QuitToCafe:hover{
+	font-size:1.2em;
+	cursor: pointer;
+}
+img#listImg{ 
+	width:15px;
+	height:15px;
+	margin-left: 15px;
+}
+.table_menu{
+    border-radius: 10px 10px;
+    position: static;
+    background-color: white;
+    margin-bottom:5px;
+    padding-bottom: 5px;  
+}
+.table_menu div#table_menubar{
+	border-bottom: 2px solid grey;	
+}
+.table_menu ul#opearateMenu{
+	margin-top: 15px;
+}
+.table_menu ul#opearateMenu li.tableMenuBtn{
+	cursor:pointer;
+}
+
+.table_menu ul#active_boardMenu{
+	border-top:2px solid grey;
+	padding-top: 10px;
+}
+.table_menu ul#active_boardMenu li.tableMenuBtn{
+	cursor:pointer;
+}
+.table_menu li:hover{
+    /* color: blue; */
+    background-color: rgb(226, 226, 173);  
+}
+.table_menu #showAllPost {
+   	padding: 5px 0px;
+    text-align: center;
+}
+.table_menu #showAllPost a{
+	background-color: #5cd1e5;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-size: 1.2em;
+}
+section.showAllPost_window{
+	/* float:left; */
+	width:800px; 
+	margin-top: 50px;
+	margin-left:500px;
+	padding-bottom: 80px;
+}
+#showAllPostTable{
+    position: absolute;
+   
+    /* border:2px solid black; */
+    background-color: white; 
+    color:black;
+    width:950px;   
+}
+#showAllPostTable tr td{
+   /*  border-bottom:2px solid black; */
+    padding:8px 12px;
+}
+div.tableWindow{
+	background-color: white;
+	width: 830px;
+	display: inline-block;
+	padding: 16px;
+	border-radius: 10px 10px;
+}
+div.tableWindow a input[type="button"]:hover{	
+	cursor: pointer;
+}
+
+div.tableWindow div#tableRemote img#titleImage{
+	padding:none;
+	height:auto;
+	width:100px;
+	z-index: 1;
+}
+div.tableWindow div#tableRemote #remoteMilestone{
+	color:#4374D9;
+	font-size:2.0em;
+	display: inline-block;
+	position: absolute;
+	margin-top: 13px;
+
+}
+button#movePrivPostBtn, button#moveNextPostBtn
+{
+	width:5.0em;
+	height:40px;
+	border-radius: 5px 5px;
+	margin-right:10px;
+	background-color: #D4F4FA;
+	border:none;
+	margin-top: 15px;
+}
+button#rePlyPostBtn{
+	width:6.0em;
+	height:40px;
+	border-radius: 5px 5px;
+	margin-right:10px;
+	background-color: #D4F4FA;
+	border:none;
+	margin-top: 15px;
+}
+div.tableWindow div#tableRemote #remoteBtn{
+	float:right;
+	width:4.0em;
+	height:40px;
+	border-radius: 5px 5px;
+	margin-right:10px;
+	background-color: #D4F4FA;
+	border:none;
+	margin-top: 15px;
+}div.tableWindow div#postInfoBox ul{
+	padding: 0;
+}
+div.tableWindow div#postInfoBox a#postWriter{	
+	padding-right:10px;
+	/* border-right: 1px solid black; */
+	padding-top:0px;
+}
+div.tableWindow div#postInfoBox{
+	padding-top:10px;
+}
+div#postTitle li{
+	display: inline-block;
+}
+div#postTitle li#postTitleBox{
+	font-size: 2.0em;
+}
+div.tableWindow div#postTitle #staff_delBtn{
+	/* padding-top:17px;
+	padding-bottom:17px; */	
+	width:auto;
+	height:40px;
+	border-radius: 5px 5px;
+	background-color: #D4F4FA;
+	border:none;
+	margin-left: 654px;
+}
+div.tableWindow diw#postTitle{
+	margin-left: 7px;
+}
+#postTexts textarea#postTextsArea{
+	resize: none;
+	margin-left:40px;
+}
+div#hitAndCommentBar{
+	
+}
+div#hitBox{
+	display: inline-block;
+	position: relative;
+}
+div#hitBox ul{
+	overflow: hidden;
+	margin: 0;
+    padding-left: 0;
+}
+div#hitBox li{
+	list-style-type: none;
+	float:left;
+}
+div#hitAndCommentBar img#hitImg{
+	height:54px;
+	width:54px;
+	border-radius: 5px 5px;
+    border: 1px solid black;
+    z-index:10;
+    display: inline-block;
+    position: absolute;
+ 	margin-top: 5px;
+    background-color: white;
+    margin-left: -60px;
+    
+}
+
+div#hitAndCommentBar img#hitImg:hover{
+/* 	background-image: url("./image_src/showAllPost/lama-g8860e410c_1280-removebg-preview.png"); */
+ 	cursor:pointer;
+	
+}
+
+div#hitBox #hitBtnLabel{
+	margin-bottom: 18px;
+}
+div#hitBox #hitBtn{
+	width: 63px;
+	height: 53px;	
+	z-index:1;
+	visibility:hidden;
+	position:relative;
+	margin-bottom:10px;
+	border-radius: 5px 5px;
+    border: none;
+}
+div#hitBox #hitBtn:checked{
+	/* width:5.0em; */
+}
+
+li #hitText{
+	margin-top: 8px;
+    margin-left: 5px;
+	border-radius: 20px 20px;
+	border:1px solid skyblue;
+	padding: 13px;
+}
+ul li#hitCountBox{
+	margin-top: 23px;	
+	margin-left: 17px;
+    margin-right: 5px;
+}
+div#commentBar{
+	/* float:left; */
+	display: inline-block;
+	position: relative;
+}
+
+div#commentBar ul{
+	overflow: hidden;
+	margin: 0;
+    padding-left: 5px;	
+}
+div#commentBar li{
+	float:left;
+	list-style-type: none;
+}
+div#commentBar img#commentImg{
+	height:54px;
+	width:54px;
+	border-radius: 5px 5px;
+    border: 1px solid black;
+    z-index:10;
+    display: inline-block;
+    position: absolute;
+   	margin-left: 8px;
+    margin-top: 1px;
+}
+li#commentCountBox{
+	margin-top: 21px;
+    margin-left: 76px; 
+    margin-bottom: 22.5px;
+    margin-right: 6px;
+    
+}
+li#disabledHitBox{
+	border:1px solid skyblue;
+	padding:10px;
+	margin-right: 50px;
+}
+li#disabledCommentBox{
+	border:1px solid skyblue;
+	padding:10px;
+	margin-right: 50px;
+}
+
+div#commentList ul{
+	padding:0;
+	overflow: hidden;
+	padding-left:10px;
+}
+div#commentList li#commentContent{
+	
+}
+ul#commentUl{
+	display:inline-block;
+}
+ul#commentText{
+	margin-left: 58px;
+}
+li#blankBox{
+	visibility: none;
+}
+div#commentList #subImg{
+	height:25px;
+	width:25px;
+}
+div#commentList ul li{
+	float:left;	
+	padding-right: 10px;
+}
+div#commentList li#borderBox{
+	border-right:1px solid grey;
+}
+div#commentList li#writerEqCW{
+	background-color: yellowgreen;
+    padding-right: 5px;
+    padding-left: 5px;
+	border-radius: 5px 5px;
+    border:none;
+}
+div#commentList li#commentDate{
+	/* padding-left: 10px; */
+}
+div#commentList ul li #comReplyBtn{
+	background-color: transparent;
+	border:none;	
+}
+div#commentList ul li #comModifyBtn{
+	background-color: transparent;
+	border:none;
+}
+div#commentList ul li #comDelBtn{
+	background-color: transparent;
+	border:none;
+}
+
+div#commentList ul li #replyBtn:hover{
+	background-color: #D4F4FA;
+}
+textarea{
+	resize: none; 
+}
+#commentInputBox{
+	min-height: 50px;
+    width: 721px;
+}
+#commentInputBtn{
+    float: right;
+    width: 4.5em;
+    height: 65px;
+    border-radius: 5px 5px;
+    background-color: #CEF279;
+    border: none;
+    margin-top: 0px;
+    margin-right: 1px;
+}
+#commentInputBoxTemp{	
+    min-height: 50px;
+    width: 578px;
+}
+#commentInputBtnTemp{
+	float: right;
+    width: 4em;
+    height: 50px;
+    border-radius: 5px 5px;
+    background-color: #CEF279;
+    border: none;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+#commentInputBoxModify{
+	min-height: 50px;
+    width: 578px;
+}
+#commentInputModifyBtn{
+	float: right;
+    width: 4em;
+    height: 50px;
+    border-radius: 5px 5px;
+    background-color: #CEF279;
+    border: none;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+#commentInputBtn:hover{
+	cursor: pointer;
+}
+div#hitListBox ul{
+	overflow: hidden;
+	margin:0;
+	padding:0;
+}
+div#hitListBox ul li{
+	list-style-type: none;
+	float:left;
+	padding-left:10px;
+	border-right:1px solid;
+	padding-right:10px;
+}
+
+#ladybug{
+	position: absolute;
+    top: 481px;
+    left: 1308px;
+    height: 251px;
+}
+#owlPic{
+	position: absolute;
+    top: 995px;    
+    left: 10px;
+    height: 268px;
+}
+/* div#hitAndCommentBar #hitBtn{
+	display: none;
+} */
+ */
+/*  페이지 버튼 css 이후 추가 구현*/
+/* #showAllPost_pagePos{
+    bottom:0px;
+    background-color: white;
+    padding: 10px 14px;
+    opacity: 0.9;
+    border:2px solid green;
+    margin-left: 20px;
+    display: inline-block;
+    left:350px;
+}
+ */
+input[type="button"]{
+    width:auto;
+    height:40px;
+}
+section.right{	
+	position:absolute;
+	display:inline;	
+}
+section.right img{	
+	display: inline-block;
+	margin-top: 110px;
+}
+
+section.bottom img{
+	margin-top: 17px;
+}
+
+
+/* input[type="button"]#privPage{
+    margin-left:130px;
+    
+}
+input[type="button"]#nextPage{
+    margin-left: 20px;
+}
+#pageIndex button{
+    float:right;
+} */
+input[type="button"]:hover{
+    background-color: blanchedalmond;
+}
+
+aside{
+    border:2px solid black;  
+    float:left;
+    width:350px;
+    position:static;
+    text-align: center;
+    background-color: antiquewhite;
+    margin-bottom: 2px;
+}
+aside #search{
+    margin-top: 5px;
+    margin-bottom:5px;
+    display: inline-block;
+}
+aside #search input[type="text"]{
+    padding-left:5px;
+    margin-left: 2px;
+}
+footer{
+    border:2px solid black;   
+    bottom:0px;
+    display: block;
+    width:200px;
+    background-color: white;
+    text-align: center;
+    padding: 20px 0px;
+    opacity: 0.9;
+    margin-left:0px;
+}
+img#testImg:hover{
+		background-color: green;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe_pro_joinToCafe</title>
+    <link rel="stylesheet" type="text/css" href="./css/cafe_pro_joinToCafe.css">
+</head>
+<body>
+    <section class="whole">  
+        <div>     
+			<img id="backgroundImg" alt="#" src="./image_src/joinToCafe/beach-ga885d0fde_1920.jpg" />
+        </div>
+    </section>
+    <div class="top">        
+            <div id="gnl">
+                <!-- 상단 통합 메뉴 공간 -->
+                <ul>
+                    <li id="goToCafeHome"><a href="cafe_proj_cafeMain.jsp">카페 홈</a> </li>
+                    <li id="goToMainSite"><a href="#">메인 포털 사이트</a> </li>               
+                </ul>
+            </div>
+    </div>    
+    <section>
+        <section class="join_window">
+        	<form action="JoinToCafeOK" name="joinForm" method="post" onsubmit="return pwChk()" accept-charset="utf-8">
+            <table>
+                <caption>회원 가입</caption>
+                <tr>
+                    <td> 아이디: <input type="text" title="Id" required name="id" id="id"></td>
+                </tr>
+                <tr>
+                    <td> 비밀번호: <input type="password" title="password" required name="pw" id="pw"></td>
+                </tr>
+                <tr>
+                    <td> 비밀번호 확인: <input type="password" title="password2" required id="pw2"></td>
+                </tr>
+                <tr>
+                    <td> 별명: <input type="text" title="nickname" required placeholder="카페에서 사용할 별명" name="nickname"> </td>
+                </tr>
+                <tr>
+                    <td> 취미: <input type="text" title="hobby" required name="hobby"></td>
+                </tr>
+                <tr>
+                    <td> 계정 찾기 질문: <select name="question">
+										<option value="졸업한 초등학교는?">졸업한 초등학교는?</option>
+										<option value="내게 가장 소중한 보물은?">내게 가장 소중한 보물은?</option>
+										<option value="가장 좋아하는 동물은?">가장 좋아하는 동물은?</option>
+									 </select>
+					</td>
+                </tr>
+                <tr>
+                	<td> 계정 찾기 답변: <input type="text" title="answer" id="answer" name="answer"></td>
+                </tr>
+                <tr>
+                    <td>                  
+                        <a href="cafe_findId.jsp"><input type="button" value="아이디 찾기" id="findId"></a>
+                        <a href="cafe_findPw.jsp"><input type="button" value="비밀번호 찾기" id="findPW"></a>
+                        <a href="cafe_pro_logIn.html"><input type="button" value="로그인" id="logIn" title="로그인"></a>                        
+                        <input type="submit" value="회원가입" id="joinSub"  title="회원가입">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <footer>
+                            ※ 계정 찾기 질문/답변은 카페 메인에서 정보 수정을 통해 변경하실 수 있습니다.
+                        </footer>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </section>
+    </section>
+    <script src="./js/cafe_pro_joinToCafe.js"></script>
+</body>
+</html>
